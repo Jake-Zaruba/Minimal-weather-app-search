@@ -123,16 +123,48 @@ body {
 }
 
 .city {
-  font-size: 3.2rem;
+  height: 4rem;
+  width: 30rem;
+  font-size: 2.8rem;
   font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  /* padding: 1rem 0 0 0; */
   color: #78972b;
+  background-color: #b8e1506c;
+  border: none;
+  border-radius: 2rem;
   grid-column: 1;
   grid-row: 2;
   justify-self: center;
+  z-index: 20;
 }
 
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+
+::placeholder {
+  background-color: rgba(255, 224, 112, 0.196);
+  opacity: 0.5;
+  color: #78972b;
+}
+
+.city:focus {
+  outline: none;
+  border: 2px solid #78972b;
+}
+
+/* .city:placeholder-shown {
+  opacity: 0.5;
+  color: #78972b;
+} */
+
 .date {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 400;
   color: #78972b;
 }

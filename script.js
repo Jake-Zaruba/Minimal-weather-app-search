@@ -315,14 +315,41 @@ let forecastHr3El = document.getElementById(`forecast-hr-3`);
 let weather = {
   fetchWeather: function (city) {
     fetch(
-      `https://api.weatherstack.com/current?access_key=47cb91ecea50bb023ceb3a6023f2b4f1&query=` +
+      `https://api.weatherstack.com/forecast?access_key=47cb91ecea50bb023ceb3a6023f2b4f1&query=` +
         city +
-        `&units=f`
+        `&hourly=1&units=f`
     )
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => this.displayWeather(data));
+  },
+  displayWeather: function (data) {
+    console.log(data);
+    let temp = data.current.temperature;
+    let forecastTime = d.getHours();
+    /////MAIN DISPLAY/////
+    currentTemp.innerHTML = `&nbsp;` + Math.round(temp) + `&deg;`;
+    /////FORECAST TEMPS/////
+    let nowTemp = data.current.temperature;
+    let hr1Temp = data.forecast.date.hourly[1].temperature;
+    console.log(hr1Temp);
+    let hr2Temp = data.list[2].main.temp;
+    let hr3Temp = data.list[3].main.temp;
+    now.innerHTML = `&nbsp;` + Math.round(nowTemp) + `&deg;`;
+    hr1.innerHTML = `&nbsp;` + Math.round(hr1Temp) + `&deg;`;
+    hr2.innerHTML = `&nbsp;` + Math.round(hr2Temp) + `&deg;`;
+    hr3.innerHTML = `&nbsp;` + Math.round(hr3Temp) + `&deg;`;
+    console.log(data.list[29].weather[0].main);
+  },
+  searchWeather: function () {
+    this.fetchWeather(document.getElementById(`search`).value);
   },
 };
+
+document.getElementById(`search`).addEventListener(`keypress`, (e) => {
+  if (e.key === `Enter`) {
+    weather.searchWeather();
+  }
+});
 
 let weatherBackground = document.querySelector(`.element-container`);
 let foregroundHill = document.getElementById(`hill-foreground-fill`);
