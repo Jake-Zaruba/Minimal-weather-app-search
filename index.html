@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app-container">
+      <div class="element-container">
+        <img id="sun" src="/img/sun.svg" />
+        <img id="sun-glow" src="/img/sun-glow.svg" />
+        <img id="sunset" src="/img/sunset.svg" />
+        <img id="sunset-glow" src="/img/sunset-glow.svg" />
+        <img id="moon" src="/img/moon.svg" />
+        <img id="moon-glow" src="/img/moon-glow.svg" />
+        <img id="cloud" src="/img/cloud.svg" />
+        <img id="cloud-glow" src="/img/cloud-glow.svg" />
+        <svg
+          id="fog"
+          width="390"
+          height="260"
+          viewBox="0 0 390 260"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g filter="url(#filter0_f_54_55)">
+            <path
+              d="M37.7149 55.0776C4.11488 53.0776 -17.2851 90.2442 -23.7851 109.078C-38.2851 139.411 -58.5851 200.878 -23.7851 204.078C11.0149 207.278 31.7149 180.744 37.7149 167.078C44.3815 176.411 66.2149 195.078 100.215 195.078C134.215 195.078 159.715 181.078 168.215 174.078C171.882 177.744 185.115 187.078 208.715 195.078C232.315 203.078 263.882 188.078 276.715 179.578C310.382 188.078 381.715 198.878 397.715 174.078C413.715 149.278 404.382 131.078 397.715 125.078C384.882 110.244 352.815 81.2776 327.215 84.0776C301.615 86.8776 286.882 101.911 282.715 109.078C269.215 97.0776 231.615 72.5776 189.215 70.5776C146.815 68.5776 112.215 92.0776 100.215 104.078C93.3815 88.5776 71.3149 57.0776 37.7149 55.0776Z"
+              fill="white"
+              fill-opacity="0.44"
+            />
+          </g>
+          <defs>
+            <filter
+              id="filter0_f_54_55"
+              x="-98"
+              y="0"
+              width="559.549"
+              height="259.343"
+              filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB"
+            >
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feBlend
+                mode="normal"
+                in="SourceGraphic"
+                in2="BackgroundImageFix"
+                result="shape"
+              />
+              <feGaussianBlur
+                stdDeviation="27.5"
+                result="effect1_foregroundBlur_54_55"
+              />
+            </filter>
+          </defs>
+        </svg>
+
+        <svg
+          id="hill-foreground"
+          width="390"
+          height="273"
+          viewBox="0 0 390 273"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            id="hill-foreground-fill"
+            d="M197.5 10.5C126.7 -16.3 35 16.6667 -2 36.5L-24 294.5H394.5C453.333 221.167 548.5 81.2 458.5 108C379.921 131.399 326.955 90.8862 272 52.9123C248.277 36.52 224.184 20.6008 197.5 10.5Z"
+            fill="#CDE097"
+          />
+        </svg>
+        <svg
+          id="hill-middle"
+          width="125"
+          height="150"
+          viewBox="0 0 125 150"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            id="hill-middle-fill"
+            d="M264 16C149.2 -18.8 40.5 14.1667 0.5 35L39 150C161.833 119.833 378.8 50.8 264 16Z"
+            fill="#DBEAB0"
+          />
+        </svg>
+
+        <svg
+          id="hill-background"
+          width="390"
+          height="352"
+          viewBox="0 0 390 352"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            id="hill-background-fill"
+            d="M-91.9272 417.482L547.932 434C624.391 109.411 356.121 -29.0552 -16.0425 5.03929C-196.345 21.557 -91.9272 417.482 -91.9272 417.482Z"
+            fill="#EBF4CF"
+          />
+        </svg>
+
+        <h1 class="main-temp">&nbsp;67&deg;</h1>
+        <div id="main-temp-box"></div>
+        <div id="forecast-box"></div>
+
+        <h2 class="city">OMRO</h2>
+        <div class="date-container">
+          <h3 id="day" class="date">MONDAY</h3>
+          <div class="date date-line">&nbsp;|&nbsp;</div>
+          <div id="month" class="date">MAY</div>
+          <div id="day-of-month" class="date">14th</div>
+        </div>
+        <div class="forecast-container">
+          <div class="forecast-current">
+            <h2 id="forecast-hr-now" class="forecast-time">now</h2>
+            <h2 id="now" class="forecast-temp">&nbsp;67&deg;</h2>
+            <img id="hr0-sunny" class="forecast-icon" src="/img/sun.svg" />
+            <img
+              id="hr0-snow"
+              class="forecast-icon icon-snowing"
+              src="/img/snow.svg"
+            />
+            <img
+              id="hr0-cloudy"
+              class="forecast-icon icon-cloudy"
+              src="/img/clouds.svg"
+            />
+            <img
+              id="hr0-partly-cloudy"
+              class="forecast-icon icon-partly-cloudy"
+              src="/img/partly-cloudy.svg"
+            />
+            <img
+              id="hr0-rain"
+              class="forecast-icon icon-raining"
+              src="/img/rain.svg"
+            />
+          </div>
+          <img
+            id="hr0-thunderstorm"
+            class="forecast-icon icon-raining"
+            src="/img/thunderstorm.svg"
+          />
+          <img
+            id="hr0-thunderstorm-with-rain"
+            class="forecast-icon icon-raining"
+            src="/img/thunderstorm-with-rain.svg"
+          />
+          <div class="forecast-1hr">
+            <h2 id="forecast-hr-1" class="forecast-time">1pm</h2>
+            <h2 id="hr1" class="forecast-temp">&nbsp;67&deg;</h2>
+            <img
+              id="hr1-sunny"
+              class="forecast-icon icon-sunny"
+              src="/img/sun.svg"
+            />
+            <img
+              id="hr1-snow"
+              class="forecast-icon icon-snowing"
+              src="/img/snow.svg"
+            />
+            <img
+              id="hr1-cloudy"
+              class="forecast-icon icon-cloudy"
+              src="/img/clouds.svg"
+            />
+            <img
+              id="hr1-partly-cloudy"
+              class="forecast-icon icon-partly-cloudy"
+              src="/img/partly-cloudy.svg"
+            />
+            <img
+              id="hr1-rain"
+              class="forecast-icon icon-raining"
+              src="/img/rain.svg"
+            />
+            <img
+              id="hr1-thunderstorm"
+              class="forecast-icon icon-raining"
+              src="/img/thunderstorm.svg"
+            />
+            <img
+              id="hr1-thunderstorm-with-rain"
+              class="forecast-icon icon-raining"
+              src="/img/thunderstorm-with-rain.svg"
+            />
+          </div>
+          <div class="forecast-2hr">
+            <h2 id="forecast-hr-2" class="forecast-time">1pm</h2>
+            <h2 id="hr2" class="forecast-temp">&nbsp;67&deg;</h2>
+            <img
+              id="hr2-sunny"
+              class="forecast-icon icon-sunny"
+              src="/img/sun.svg"
+            />
+            <img
+              id="hr2-snow"
+              class="forecast-icon icon-snowing"
+              src="/img/snow.svg"
+            />
+            <img
+              id="hr2-cloudy"
+              class="forecast-icon icon-cloudy"
+              src="/img/clouds.svg"
+            />
+            <img
+              id="hr2-partly-cloudy"
+              class="forecast-icon icon-partly-cloudy"
+              src="/img/partly-cloudy.svg"
+            />
+            <img
+              id="hr2-rain"
+              class="forecast-icon icon-raining"
+              src="/img/rain.svg"
+            />
+            <img
+              id="hr2-thunderstorm"
+              class="forecast-icon icon-raining"
+              src="/img/thunderstorm.svg"
+            />
+            <img
+              id="hr2-thunderstorm-with-rain"
+              class="forecast-icon icon-raining"
+              src="/img/thunderstorm-with-rain.svg"
+            />
+          </div>
+          <div class="forecast-3hr">
+            <h2 id="forecast-hr-3" class="forecast-time">1pm</h2>
+            <h2 id="hr3" class="forecast-temp">&nbsp;67&deg;</h2>
+            <img
+              id="hr3-sunny"
+              class="forecast-icon icon-sunny"
+              src="/img/sun.svg"
+            />
+            <img
+              id="hr3-snow"
+              class="forecast-icon icon-snowing"
+              src="/img/snow.svg"
+            />
+            <img
+              id="hr3-cloudy"
+              class="forecast-icon icon-cloudy"
+              src="/img/clouds.svg"
+            />
+            <img
+              id="hr3-partly-cloudy"
+              class="forecast-icon icon-partly-cloudy"
+              src="/img/partly-cloudy.svg"
+            />
+            <img
+              id="hr3-rain"
+              class="forecast-icon icon-raining"
+              src="/img/rain.svg"
+            />
+            <img
+              id="hr3-thunderstorm"
+              class="forecast-icon icon-raining"
+              src="/img/thunderstorm.svg"
+            />
+            <img
+              id="hr3-thunderstorm-with-rain"
+              class="forecast-icon icon-raining"
+              src="/img/thunderstorm-with-rain.svg"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/script.js"></script>
+  </body>
+</html>

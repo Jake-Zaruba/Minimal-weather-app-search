@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  color: white;
+  background: #fff8d2;
+  max-width: 39rem;
+}
+
+.app-container {
+  display: grid;
+  /* align-items: center; */
+}
+
+.element-container {
+  max-width: 39rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 0.5fr 0.5fr 0.5fr 0.5fr;
+}
+
+.forecast-container {
+  display: flex;
+  gap: 2rem;
+  margin-top: 4rem;
+  justify-self: center;
+  grid-column: 1;
+  grid-row: 3 / span 4;
+  z-index: 2;
+}
+
+.forecast-current,
+.forecast-1hr,
+.forecast-2hr,
+.forecast-3hr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.forecast-icon {
+  width: 4.8rem;
+  height: 4.8rem;
+}
+
+.date-container {
+  display: flex;
+  margin-bottom: 7rem;
+  grid-column: 1;
+  grid-row: 2;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.main-temp {
+  font-size: 6.4rem;
+  font-weight: 400;
+  grid-column: 1;
+  grid-row: 1;
+  z-index: 2;
+  justify-self: center;
+  align-self: center;
+}
+
+.city {
+  font-size: 3.2rem;
+  font-weight: 400;
+  color: #78972b;
+  grid-column: 1;
+  grid-row: 2;
+  justify-self: center;
+}
+
+.date {
+  font-size: 2rem;
+  font-weight: 400;
+  color: #78972b;
+}
+
+.forecast-time,
+.forecast-temp {
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+
+#sun {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: flex-end;
+  margin: 4rem 4rem 0 0;
+}
+
+#sun-glow {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: flex-end;
+  /* margin: 2rem 2rem 0 0; */
+}
+
+#hill-foreground {
+  grid-column: 1;
+  grid-row: 4 / span 5;
+  z-index: 3;
+  justify-self: center;
+}
+
+#hill-middle {
+  grid-column: 1;
+  grid-row: 4 / span 5;
+  z-index: 2;
+  justify-self: flex-end;
+  overflow: hidden;
+  margin: 1rem 0 0 25rem;
+  padding: 2rem 0 0 30rem;
+}
+
+#hill-background {
+  grid-column: 1;
+  grid-row: 3 / span 5;
+  z-index: 1;
+  justify-self: center;
+  margin-top: 5rem;
+}
+
+#main-temp-box {
+  grid-column: 1;
+  grid-row: 1;
+  z-index: 1;
+  justify-self: center;
+  align-self: center;
+  /* background-filter: blur(10rem); */
+}
+
+#forecast-box {
+  justify-self: center;
+  grid-column: 1;
+  grid-row: 3 / span 4;
+  z-index: 1;
+  margin-top: 2rem;
+}
