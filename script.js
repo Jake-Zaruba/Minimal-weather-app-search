@@ -510,7 +510,8 @@ let weather = {
       data.current.weather_code === 299 ||
       data.current.weather_code === 302 ||
       data.current.weather_code === 305 ||
-      data.current.weather_code === 308
+      data.current.weather_code === 308 ||
+      data.current.weather_code === 362
     ) {
       document.getElementById(`hr0-rain`).style.display = `block`;
     } else if (
@@ -564,7 +565,8 @@ let weather = {
       data.current.weather_code === 299 ||
       data.current.weather_code === 302 ||
       data.current.weather_code === 305 ||
-      data.current.weather_code === 308
+      data.current.weather_code === 308 ||
+      data.current.weather_code === 362
     ) {
       document.getElementById(`hr1-rain`).style.display = `block`;
     } else if (
@@ -618,7 +620,8 @@ let weather = {
       data.current.weather_code === 299 ||
       data.current.weather_code === 302 ||
       data.current.weather_code === 305 ||
-      data.current.weather_code === 308
+      data.current.weather_code === 308 ||
+      data.current.weather_code === 362
     ) {
       document.getElementById(`hr2-rain`).style.display = `block`;
     } else if (
@@ -672,7 +675,8 @@ let weather = {
       data.current.weather_code === 299 ||
       data.current.weather_code === 302 ||
       data.current.weather_code === 305 ||
-      data.current.weather_code === 308
+      data.current.weather_code === 308 ||
+      data.current.weather_code === 362
     ) {
       document.getElementById(`hr3-rain`).style.display = `block`;
     } else if (
