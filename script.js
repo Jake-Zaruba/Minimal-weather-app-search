@@ -33,10 +33,16 @@
 //     document.querySelector(`.city`).textContent = `Location Off`;
 //   }
 // });
-
+//2022-05-19//
 let d = new Date();
 console.log(d);
+let weatherDay = d.getDate();
+let weatherMonth = d.getMonth() + 1;
+let weatherYear = d.getFullYear();
+let currentWeatherDate = weatherYear + `-0` + weatherMonth + `-` + weatherDay;
+// console.log(currentWeatherDate);
 const time = d.getHours();
+// console.log(time);
 let currentCity = document.querySelector(`.city`);
 let currentTemp = document.querySelector(`.main-temp`);
 /////FORCAST TEMPS/////
@@ -317,7 +323,7 @@ let weather = {
     fetch(
       `https://api.weatherstack.com/forecast?access_key=47cb91ecea50bb023ceb3a6023f2b4f1&query=` +
         city +
-        `&hourly=1&units=f`
+        `&forecast_days=1&hourly=1&interval=1&units=f`
     )
       .then((response) => response.json())
       .then((data) => this.displayWeather(data));
@@ -327,20 +333,365 @@ let weather = {
     let temp = data.current.temperature;
     let forecastTime = d.getHours();
     /////MAIN DISPLAY/////
-    currentTemp.innerHTML = `&nbsp;` + Math.round(temp) + `&deg;`;
+    currentTemp.innerHTML = `&nbsp;` + temp + `&deg;`;
     /////FORECAST TEMPS/////
+    // console.log(time);
+    const formatForecastTime = function (hour) {
+      if (hour === 25) {
+        return 1;
+      } else if (hour === 26) {
+        return 2;
+      } else if (hour === 3) {
+        return 3;
+      } else if (hour === 4) {
+        return 4;
+      } else if (hour === 5) {
+        return 5;
+      } else if (hour === 6) {
+        return 6;
+      } else if (hour === 7) {
+        return 7;
+      } else if (hour === 8) {
+        return 8;
+      } else if (hour === 9) {
+        return 9;
+      } else if (hour === 10) {
+        return 10;
+      } else if (hour === 11) {
+        return 11;
+      } else if (hour === 12) {
+        return 12;
+      } else if (hour === 13) {
+        return 13;
+      } else if (hour === 14) {
+        return 14;
+      } else if (hour === 15) {
+        return 15;
+      } else if (hour === 16) {
+        return 16;
+      } else if (hour === 17) {
+        return 17;
+      } else if (hour === 18) {
+        return 18;
+      } else if (hour === 19) {
+        return 19;
+      } else if (hour === 20) {
+        return 20;
+      } else if (hour === 21) {
+        return 21;
+      } else if (hour === 22) {
+        return 22;
+      } else if (hour === 23) {
+        return 23;
+      } else if (hour === 0) {
+        return 0;
+      } else {
+        return `ope`;
+      }
+    };
     let nowTemp = data.current.temperature;
-    let hr1Temp = data.forecast.date.hourly[1].temperature;
+    let hr1Temp =
+      data.forecast[currentWeatherDate].hourly[formatForecastTime(time + 1)]
+        .temperature;
     console.log(hr1Temp);
-    let hr2Temp = data.list[2].main.temp;
-    let hr3Temp = data.list[3].main.temp;
-    now.innerHTML = `&nbsp;` + Math.round(nowTemp) + `&deg;`;
-    hr1.innerHTML = `&nbsp;` + Math.round(hr1Temp) + `&deg;`;
-    hr2.innerHTML = `&nbsp;` + Math.round(hr2Temp) + `&deg;`;
-    hr3.innerHTML = `&nbsp;` + Math.round(hr3Temp) + `&deg;`;
-    console.log(data.list[29].weather[0].main);
+    let hr2Temp =
+      data.forecast[currentWeatherDate].hourly[formatForecastTime(time + 2)]
+        .temperature;
+    console.log(hr2Temp);
+    let hr3Temp =
+      data.forecast[currentWeatherDate].hourly[formatForecastTime(time + 3)]
+        .temperature;
+    console.log(hr3Temp);
+    now.innerHTML = `&nbsp;` + nowTemp + `&deg;`;
+    hr1.innerHTML = `&nbsp;` + hr1Temp + `&deg;`;
+    hr2.innerHTML = `&nbsp;` + hr2Temp + `&deg;`;
+    hr3.innerHTML = `&nbsp;` + hr3Temp + `&deg;`;
+
+    /////FORECAST HOURS/////
+
+    let forecastHr1 = forecastTime + 1;
+    let forecastHr2 = forecastTime + 2;
+    let forecastHr3 = forecastTime + 3;
+    const formatTime = function (hour) {
+      if (hour === 25) {
+        return `1am`;
+      } else if (hour === 26) {
+        return `2am`;
+      } else if (hour === 3) {
+        return `3am`;
+      } else if (hour === 4) {
+        return `4am`;
+      } else if (hour === 5) {
+        return `5am`;
+      } else if (hour === 6) {
+        return `6am`;
+      } else if (hour === 7) {
+        return `7am`;
+      } else if (hour === 8) {
+        return `8am`;
+      } else if (hour === 9) {
+        return `9am`;
+      } else if (hour === 10) {
+        return `10am`;
+      } else if (hour === 11) {
+        return `11am`;
+      } else if (hour === 12) {
+        return `12pm`;
+      } else if (hour === 13) {
+        return `1pm`;
+      } else if (hour === 14) {
+        return `2pm`;
+      } else if (hour === 15) {
+        return `3pm`;
+      } else if (hour === 16) {
+        return `4pm`;
+      } else if (hour === 17) {
+        return `5pm`;
+      } else if (hour === 18) {
+        return `6pm`;
+      } else if (hour === 19) {
+        return `7pm`;
+      } else if (hour === 20) {
+        return `8pm`;
+      } else if (hour === 21) {
+        return `9pm`;
+      } else if (hour === 22) {
+        return `10pm`;
+      } else if (hour === 23) {
+        return `11pm`;
+      } else if (hour === 24) {
+        return `12am`;
+      } else {
+        return `0`;
+      }
+    };
+    forecastHr1El.innerHTML = formatTime(forecastHr1);
+    forecastHr2El.innerHTML = formatTime(forecastHr2);
+    forecastHr3El.innerHTML = formatTime(forecastHr3);
+
+    ////////////////////////
+    /////FORECAST ICONS/////
+    ////////////////////////
+
+    /////CURRENT HOUR/////
+    if (data.current.weather_code === 122) {
+      document.getElementById(`hr0-cloudy`).style.display = `block`;
+    } else if (data.current.weather_code === 113 && time < 20 && time > 6) {
+      document.getElementById(`hr0-sunny`).style.display = `block`;
+    } else if (
+      (data.current.weather_code === 113 && time > 20) ||
+      (data.current.weather_code === 113 && time < 7)
+    ) {
+      document.getElementById(`hr0-clear-night`).style.display = `block`;
+    } else if (
+      data.current.weather_code === 200 ||
+      data.current.weather_code === 386 ||
+      data.current.weather_code === 389
+    ) {
+      document.getElementById(
+        `hr0-thunderstorm-with-rain`
+      ).style.display = `block`;
+    } else if (data.current.weather_code === 200) {
+      document.getElementById(`hr0-thunderstorm`).style.display = `block`;
+    } else if (
+      data.current.weather_code === 227 ||
+      data.current.weather_code === 230 ||
+      data.current.weather_code === 323 ||
+      data.current.weather_code === 326 ||
+      data.current.weather_code === 329 ||
+      data.current.weather_code === 332 ||
+      data.current.weather_code === 335 ||
+      data.current.weather_code === 338 ||
+      data.current.weather_code === 368 ||
+      data.current.weather_code === 371
+    ) {
+      document.getElementById(`hr0-snow`).style.display = `block`;
+    } else if (
+      data.current.weather_code === 266 ||
+      data.current.weather_code === 296 ||
+      data.current.weather_code === 299 ||
+      data.current.weather_code === 302 ||
+      data.current.weather_code === 305 ||
+      data.current.weather_code === 308
+    ) {
+      document.getElementById(`hr0-rain`).style.display = `block`;
+    } else if (
+      data.current.weather_code === 116 ||
+      data.current.weather_code === 119 ||
+      data.current.weather_code === 176 ||
+      data.current.weather_code === 353 ||
+      data.current.weather_code === 356 ||
+      data.current.weather_code === 359
+    ) {
+      document.getElementById(`hr0-partly-cloudy`).style.display = `block`;
+    }
+    ////////////////
+    /////HOUR 1/////
+    ////////////////
+    if (data.current.weather_code === 122) {
+      document.getElementById(`hr1-cloudy`).style.display = `block`;
+    } else if (data.current.weather_code === 113 && time < 20 && time > 6) {
+      document.getElementById(`hr1-sunny`).style.display = `block`;
+    } else if (
+      (data.current.weather_code === 113 && time > 20) ||
+      (data.current.weather_code === 113 && time < 7)
+    ) {
+      document.getElementById(`hr1-clear-night`).style.display = `block`;
+    } else if (
+      data.current.weather_code === 200 ||
+      data.current.weather_code === 386 ||
+      data.current.weather_code === 389
+    ) {
+      document.getElementById(
+        `hr1-thunderstorm-with-rain`
+      ).style.display = `block`;
+    } else if (data.current.weather_code === 200) {
+      document.getElementById(`hr1-thunderstorm`).style.display = `block`;
+    } else if (
+      data.current.weather_code === 227 ||
+      data.current.weather_code === 230 ||
+      data.current.weather_code === 323 ||
+      data.current.weather_code === 326 ||
+      data.current.weather_code === 329 ||
+      data.current.weather_code === 332 ||
+      data.current.weather_code === 335 ||
+      data.current.weather_code === 338 ||
+      data.current.weather_code === 368 ||
+      data.current.weather_code === 371
+    ) {
+      document.getElementById(`hr1-snow`).style.display = `block`;
+    } else if (
+      data.current.weather_code === 266 ||
+      data.current.weather_code === 296 ||
+      data.current.weather_code === 299 ||
+      data.current.weather_code === 302 ||
+      data.current.weather_code === 305 ||
+      data.current.weather_code === 308
+    ) {
+      document.getElementById(`hr1-rain`).style.display = `block`;
+    } else if (
+      data.current.weather_code === 116 ||
+      data.current.weather_code === 119 ||
+      data.current.weather_code === 176 ||
+      data.current.weather_code === 353 ||
+      data.current.weather_code === 356 ||
+      data.current.weather_code === 359
+    ) {
+      document.getElementById(`hr1-partly-cloudy`).style.display = `block`;
+    }
+    ////////////////
+    /////HOUR 2/////
+    ////////////////
+    if (data.current.weather_code === 122) {
+      document.getElementById(`hr2-cloudy`).style.display = `block`;
+    } else if (data.current.weather_code === 113 && time < 20 && time > 6) {
+      document.getElementById(`hr2-sunny`).style.display = `block`;
+    } else if (
+      (data.current.weather_code === 113 && time > 20) ||
+      (data.current.weather_code === 113 && time < 7)
+    ) {
+      document.getElementById(`hr2-clear-night`).style.display = `block`;
+    } else if (
+      data.current.weather_code === 200 ||
+      data.current.weather_code === 386 ||
+      data.current.weather_code === 389
+    ) {
+      document.getElementById(
+        `hr2-thunderstorm-with-rain`
+      ).style.display = `block`;
+    } else if (data.current.weather_code === 200) {
+      document.getElementById(`hr2-thunderstorm`).style.display = `block`;
+    } else if (
+      data.current.weather_code === 227 ||
+      data.current.weather_code === 230 ||
+      data.current.weather_code === 323 ||
+      data.current.weather_code === 326 ||
+      data.current.weather_code === 329 ||
+      data.current.weather_code === 332 ||
+      data.current.weather_code === 335 ||
+      data.current.weather_code === 338 ||
+      data.current.weather_code === 368 ||
+      data.current.weather_code === 371
+    ) {
+      document.getElementById(`hr2-snow`).style.display = `block`;
+    } else if (
+      data.current.weather_code === 266 ||
+      data.current.weather_code === 296 ||
+      data.current.weather_code === 299 ||
+      data.current.weather_code === 302 ||
+      data.current.weather_code === 305 ||
+      data.current.weather_code === 308
+    ) {
+      document.getElementById(`hr2-rain`).style.display = `block`;
+    } else if (
+      data.current.weather_code === 116 ||
+      data.current.weather_code === 119 ||
+      data.current.weather_code === 176 ||
+      data.current.weather_code === 353 ||
+      data.current.weather_code === 356 ||
+      data.current.weather_code === 359
+    ) {
+      document.getElementById(`hr2-partly-cloudy`).style.display = `block`;
+    }
+    ////////////////
+    /////HOUR 3/////
+    ////////////////
+    if (data.current.weather_code === 122) {
+      document.getElementById(`hr3-cloudy`).style.display = `block`;
+    } else if (data.current.weather_code === 113 && time < 20 && time > 6) {
+      document.getElementById(`hr3-sunny`).style.display = `block`;
+    } else if (
+      (data.current.weather_code === 113 && time > 20) ||
+      (data.current.weather_code === 113 && time < 7)
+    ) {
+      document.getElementById(`hr3-clear-night`).style.display = `block`;
+    } else if (
+      data.current.weather_code === 200 ||
+      data.current.weather_code === 386 ||
+      data.current.weather_code === 389
+    ) {
+      document.getElementById(
+        `hr3-thunderstorm-with-rain`
+      ).style.display = `block`;
+    } else if (data.current.weather_code === 200) {
+      document.getElementById(`hr3-thunderstorm`).style.display = `block`;
+    } else if (
+      data.current.weather_code === 227 ||
+      data.current.weather_code === 230 ||
+      data.current.weather_code === 323 ||
+      data.current.weather_code === 326 ||
+      data.current.weather_code === 329 ||
+      data.current.weather_code === 332 ||
+      data.current.weather_code === 335 ||
+      data.current.weather_code === 338 ||
+      data.current.weather_code === 368 ||
+      data.current.weather_code === 371
+    ) {
+      document.getElementById(`hr3-snow`).style.display = `block`;
+    } else if (
+      data.current.weather_code === 266 ||
+      data.current.weather_code === 296 ||
+      data.current.weather_code === 299 ||
+      data.current.weather_code === 302 ||
+      data.current.weather_code === 305 ||
+      data.current.weather_code === 308
+    ) {
+      document.getElementById(`hr3-rain`).style.display = `block`;
+    } else if (
+      data.current.weather_code === 116 ||
+      data.current.weather_code === 119 ||
+      data.current.weather_code === 176 ||
+      data.current.weather_code === 353 ||
+      data.current.weather_code === 356 ||
+      data.current.weather_code === 359
+    ) {
+      document.getElementById(`hr3-partly-cloudy`).style.display = `block`;
+    }
   },
   searchWeather: function () {
+    document.querySelectorAll(`.forecast-icon`).forEach((entries) => {
+      entries.style.display = `none`;
+    });
     this.fetchWeather(document.getElementById(`search`).value);
   },
 };
@@ -365,8 +716,6 @@ let sunsetGlow = document.getElementById(`sunset-glow`);
 let cloudGlow = document.getElementById(`cloud-glow`);
 // let city = document.querySelector(`.city`);
 let displayDate = document.querySelectorAll(`.date`);
-
-// console.log(time);
 
 //////////////////////////////////////////////////////////////
 //DAY OF WEEK CHANGES///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -397,7 +746,6 @@ switch (day) {
     day = `SATURDAY`;
     break;
 }
-// console.log(day);
 
 dayOfWeek.innerHTML = day;
 
@@ -445,7 +793,6 @@ switch (month) {
     month = `DECEMBER`;
     break;
 }
-// console.log(month);
 
 displayMonth.innerHTML = month + `&nbsp;`;
 
@@ -466,7 +813,7 @@ const getDayEnding = function (dayNumber) {
   } else {
     dayEnding = `th`;
   }
-  // console.log(dayEnding);
+
   return dayEnding;
 };
 // console.log(dayOfMonth);
