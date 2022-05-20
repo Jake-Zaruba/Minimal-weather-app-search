@@ -13,6 +13,7 @@ body {
   font-family: "Inter", sans-serif;
   color: white;
   background: rgb(227, 226, 226);
+  overflow: hidden;
   /* max-width: 39rem; */
 }
 
