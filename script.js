@@ -40,9 +40,7 @@ let weatherDay = d.getDate();
 let weatherMonth = d.getMonth() + 1;
 let weatherYear = d.getFullYear();
 let currentWeatherDate = weatherYear + `-0` + weatherMonth + `-` + weatherDay;
-// console.log(currentWeatherDate);
 const time = d.getHours();
-// console.log(time);
 let currentCity = document.querySelector(`.city`);
 let currentTemp = document.querySelector(`.main-temp`);
 /////FORCAST TEMPS/////
@@ -335,7 +333,7 @@ let weather = {
     /////MAIN DISPLAY/////
     currentTemp.innerHTML = `&nbsp;` + temp + `&deg;`;
     /////FORECAST TEMPS/////
-    // console.log(time);
+
     const formatForecastTime = function (hour) {
       if (hour === 25) {
         return 1;
@@ -687,6 +685,9 @@ let weather = {
     ) {
       document.getElementById(`hr3-partly-cloudy`).style.display = `block`;
     }
+    document.querySelectorAll(`.loading`).forEach((entries) => {
+      entries.classList.remove(`loading`);
+    });
   },
   searchWeather: function () {
     document.querySelectorAll(`.forecast-icon`).forEach((entries) => {
@@ -816,8 +817,6 @@ const getDayEnding = function (dayNumber) {
 
   return dayEnding;
 };
-// console.log(dayOfMonth);
-// console.log(getDayEnding(dayOfMonth));
 let dayEnding = getDayEnding(dayOfMonth);
 displayDay.innerHTML = dayOfMonth + `${dayEnding}`;
 
