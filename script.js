@@ -700,6 +700,7 @@ let weather = {
 document.getElementById(`search`).addEventListener(`keypress`, (e) => {
   if (e.key === `Enter`) {
     weather.searchWeather();
+    window.scrollTo({ top: 0, behavior: `smooth` });
   }
 });
 

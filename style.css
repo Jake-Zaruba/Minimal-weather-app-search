@@ -136,6 +136,7 @@ body {
   /* padding: 1rem 0 0 0; */
   color: #78972b;
   background-color: #b8e1506c;
+  caret-color: #78972b;
   border: none;
   border-radius: 2rem;
   grid-column: 1;
@@ -169,7 +170,7 @@ input[type="search"]::-webkit-search-results-decoration {
   height: 2.4rem;
   width: 2.4rem;
   z-index: 100;
-  stroke: #78972b;
+  stroke: #78972bc7;
   opacity: 0.6;
   cursor: pointer;
 }
