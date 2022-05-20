@@ -25,9 +25,7 @@ body {
 }
 
 .element-container {
-  /* background: linear-gradient(to bottom, #f7e5a5, #fff8d2); */
-  /* background: #116687; */
-  /* background: #d2f2ff; */
+  position: relative;
   background: #fff8d2;
   grid-column: 2;
   width: 100%;
@@ -161,6 +159,18 @@ input[type="search"]::-webkit-search-results-decoration {
 .city:focus {
   outline: none;
   border: 2px solid #78972b;
+}
+
+.search-icon {
+  position: absolute;
+  top: 34.2%;
+  right: 14.5%;
+  height: 2.4rem;
+  width: 2.4rem;
+  z-index: 100;
+  stroke: #78972b;
+  opacity: 0.6;
+  cursor: pointer;
 }
 
 /* .city:placeholder-shown {

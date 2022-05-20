@@ -703,6 +703,10 @@ document.getElementById(`search`).addEventListener(`keypress`, (e) => {
   }
 });
 
+document.querySelector(`.search-icon`).addEventListener(`click`, () => {
+  weather.searchWeather();
+});
+
 let weatherBackground = document.querySelector(`.element-container`);
 let foregroundHill = document.getElementById(`hill-foreground-fill`);
 let middleHill = document.getElementById(`hill-middle-fill`);
