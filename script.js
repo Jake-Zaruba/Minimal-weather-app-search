@@ -705,6 +705,7 @@ document.getElementById(`search`).addEventListener(`keypress`, (e) => {
 
 document.querySelector(`.search-icon`).addEventListener(`click`, () => {
   weather.searchWeather();
+  window.scrollTo({ top: 0, behavior: `smooth` });
 });
 
 let weatherBackground = document.querySelector(`.element-container`);
