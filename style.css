@@ -175,6 +175,18 @@ input[type="search"]::-webkit-search-results-decoration {
   cursor: pointer;
 }
 
+.location-icon {
+  position: absolute;
+  top: 34.35%;
+  right: 79.5%;
+  height: 2.4rem;
+  width: 2.4rem;
+  z-index: 100;
+  stroke: #78972bc7;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
 /* .city:placeholder-shown {
   opacity: 0.5;
   color: #78972b;
