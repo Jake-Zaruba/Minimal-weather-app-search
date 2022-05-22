@@ -11,13 +11,14 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <title>Document</title>
+    <title>Minimal weather app</title>
   </head>
   <body>
     <div class="app-container">
       <div class="element-container">
         <svg
           class="options"
+          title="Three dots stacked vertically indicating a menu"
           xmlns="http://www.w3.org/2000/svg"
           class="h-6 w-6"
           fill="none"
@@ -31,16 +32,37 @@
             d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
           />
         </svg>
-        <img id="sun" src="/img/sun.svg" />
-        <img id="sun-glow" src="/img/sun-glow.svg" />
-        <img id="sunset" src="/img/sunset.svg" />
-        <img id="sunset-glow" src="/img/sunset-glow.svg" />
-        <img id="moon" src="/img/moon.svg" />
-        <img id="moon-glow" src="/img/moon-glow.svg" />
-        <img id="cloud" src="/img/cloud.svg" />
-        <img id="cloud-glow" src="/img/cloud-glow.svg" />
+        <img id="sun" src="/img/sun.svg" alt="Yellow sun icon" />
+        <img
+          id="sun-glow"
+          src="/img/sun-glow.svg"
+          alt="Yellow glow behind the sun icon"
+        />
+        <img
+          id="sunset"
+          src="/img/sunset.svg"
+          alt="Orange-yellow sunset icon"
+        />
+        <img
+          id="sunset-glow"
+          src="/img/sunset-glow.svg"
+          alt="Orange-yellow glow behind the sunset icon"
+        />
+        <img id="moon" src="/img/moon.svg" alt="White-yellow moon icon" />
+        <img
+          id="moon-glow"
+          src="/img/moon-glow.svg"
+          alt="White-yelloe glow behind the moon icon"
+        />
+        <img id="cloud" src="/img/cloud.svg" alt="White cloud icon" />
+        <img
+          id="cloud-glow"
+          src="/img/cloud-glow.svg"
+          alt="White glow behind the cloud icon"
+        />
         <svg
           id="fog"
+          title="Fog covering three hills"
           width="390"
           height="260"
           viewBox="0 0 390 260"
@@ -81,6 +103,7 @@
 
         <svg
           id="hill-foreground"
+          title="A hill in the foreground that is green during the day, and dark blue at night"
           width="390"
           height="273"
           viewBox="0 0 390 273"
@@ -95,6 +118,7 @@
         </svg>
         <svg
           id="hill-middle"
+          title="A hill behind the foreground hill that is green during the day, and dark blue at night"
           width="125"
           height="150"
           viewBox="0 0 125 150"
@@ -110,6 +134,7 @@
 
         <svg
           id="hill-background"
+          title="A hill in background that is green during the day, and dark blue at night"
           width="390"
           height="352"
           viewBox="0 0 390 352"
@@ -128,6 +153,7 @@
         <div id="forecast-box"></div>
         <svg
           class="location-icon"
+          title="A small location pin icon"
           xmlns="http://www.w3.org/2000/svg"
           class="h-6 w-6"
           fill="none"
@@ -148,6 +174,7 @@
         </svg>
         <svg
           class="search-icon"
+          title="A small magnifying glass icon"
           xmlns="http://www.w3.org/2000/svg"
           class="h-6 w-6"
           fill="none"
@@ -179,41 +206,53 @@
           <div class="forecast-current loading">
             <h2 id="forecast-hr-now" class="forecast-time">now</h2>
             <h2 id="now" class="forecast-temp">&nbsp;67&deg;</h2>
-            <img id="hr0-sunny" class="forecast-icon" src="/img/sun.svg" />
+            <img
+              id="hr0-sunny"
+              class="forecast-icon"
+              src="/img/sun.svg"
+              alt="A sun icon indicating sunny weather"
+            />
             <img
               id="hr0-snow"
               class="forecast-icon icon-snowing"
               src="/img/snow.svg"
+              alt="A cloud icon with falling snowflakes indicating snowy weather"
             />
             <img
               id="hr0-cloudy"
               class="forecast-icon icon-cloudy"
               src="/img/clouds.svg"
+              alt="A cloud icon indicating overcast skies"
             />
             <img
               id="hr0-partly-cloudy"
               class="forecast-icon icon-partly-cloudy"
               src="/img/partly-cloudy.svg"
+              alt="A cloud and sun icon indicating partly cloudy skies"
             />
             <img
               id="hr0-rain"
-              class="forecast-icon icon-raining"
+              class="forecast-icon"
               src="/img/rain.svg"
+              alt="A cloud icon with falling rain indicating rainy weather"
             />
             <img
               id="hr0-thunderstorm"
-              class="forecast-icon icon-raining"
+              class="forecast-icon"
               src="/img/thunderstorm.svg"
+              alt="A dark grey cloud icon with lightning bolts indicating stormy weather"
             />
             <img
               id="hr0-thunderstorm-with-rain"
-              class="forecast-icon icon-raining"
+              class="forecast-icon"
               src="/img/thunderstorm-with-rain.svg"
+              alt="A dark grey cloud icon with lightning bolts and rain indicating stormy and rainy weather"
             />
             <img
               id="hr0-clear-night"
-              class="forecast-icon icon-raining"
+              class="forecast-icon"
               src="/img/moon.svg"
+              alt="A crescent moon icon indicating clear skies"
             />
           </div>
 
@@ -224,41 +263,49 @@
               id="hr1-sunny"
               class="forecast-icon icon-sunny"
               src="/img/sun.svg"
+              alt="A sun icon indicating sunny weather"
             />
             <img
               id="hr1-snow"
               class="forecast-icon icon-snowing"
               src="/img/snow.svg"
+              alt="A cloud icon with falling snowflakes indicating snowy weather"
             />
             <img
               id="hr1-cloudy"
               class="forecast-icon icon-cloudy"
               src="/img/clouds.svg"
+              alt="A cloud icon indicating overcast skies"
             />
             <img
               id="hr1-partly-cloudy"
               class="forecast-icon icon-partly-cloudy"
               src="/img/partly-cloudy.svg"
+              alt="A cloud and sun icon indicating partly cloudy skies"
             />
             <img
               id="hr1-rain"
-              class="forecast-icon icon-raining"
+              class="forecast-icon"
               src="/img/rain.svg"
+              alt="A cloud icon with falling rain indicating rainy weather"
             />
             <img
               id="hr1-thunderstorm"
-              class="forecast-icon icon-raining"
+              alt="A dark grey cloud icon with lightning bolts indicating stormy weather"
+              class="forecast-icon"
               src="/img/thunderstorm.svg"
             />
             <img
-              id="hr1-clear-night"
-              class="forecast-icon icon-raining"
-              src="/img/moon.svg"
+              id="hr1-thunderstorm-with-rain"
+              class="forecast-icon"
+              src="/img/thunderstorm-with-rain.svg"
+              alt="A crescent moon icon indicating clear skies"
             />
             <img
-              id="hr1-thunderstorm-with-rain"
-              class="forecast-icon icon-raining"
-              src="/img/thunderstorm-with-rain.svg"
+              id="hr1-clear-night"
+              class="forecast-icon"
+              src="/img/moon.svg"
+              alt="A dark grey cloud icon with lightning bolts and rain indicating stormy and rainy weather"
             />
           </div>
           <div class="forecast-2hr loading">
@@ -268,41 +315,49 @@
               id="hr2-sunny"
               class="forecast-icon icon-sunny"
               src="/img/sun.svg"
+              alt="A sun icon indicating sunny weather"
             />
             <img
               id="hr2-snow"
               class="forecast-icon icon-snowing"
               src="/img/snow.svg"
+              alt="A cloud icon with falling snowflakes indicating snowy weather"
             />
             <img
               id="hr2-cloudy"
               class="forecast-icon icon-cloudy"
               src="/img/clouds.svg"
+              alt="A cloud icon indicating overcast skies"
             />
             <img
               id="hr2-partly-cloudy"
               class="forecast-icon icon-partly-cloudy"
               src="/img/partly-cloudy.svg"
+              alt="A cloud and sun icon indicating partly cloudy skies"
             />
             <img
               id="hr2-rain"
-              class="forecast-icon icon-raining"
+              class="forecast-icon"
               src="/img/rain.svg"
+              alt="A cloud icon with falling rain indicating rainy weather"
             />
             <img
               id="hr2-thunderstorm"
-              class="forecast-icon icon-raining"
+              class="forecast-icon"
               src="/img/thunderstorm.svg"
+              alt="A dark grey cloud icon with lightning bolts indicating stormy weather"
             />
             <img
               id="hr2-thunderstorm-with-rain"
-              class="forecast-icon icon-raining"
+              class="forecast-icon"
               src="/img/thunderstorm-with-rain.svg"
+              alt="A dark grey cloud icon with lightning bolts and rain indicating stormy and rainy weather"
             />
             <img
               id="hr2-clear-night"
-              class="forecast-icon icon-raining"
+              class="forecast-icon"
               src="/img/moon.svg"
+              alt="A crescent moon icon indicating clear skies"
             />
           </div>
           <div class="forecast-3hr loading">
@@ -312,41 +367,49 @@
               id="hr3-sunny"
               class="forecast-icon icon-sunny"
               src="/img/sun.svg"
+              alt="A sun icon indicating sunny weather"
             />
             <img
               id="hr3-snow"
               class="forecast-icon icon-snowing"
               src="/img/snow.svg"
+              alt="A cloud icon with falling snowflakes indicating snowy weather"
             />
             <img
               id="hr3-cloudy"
               class="forecast-icon icon-cloudy"
               src="/img/clouds.svg"
+              alt="A cloud icon indicating overcast skies"
             />
             <img
               id="hr3-partly-cloudy"
               class="forecast-icon icon-partly-cloudy"
               src="/img/partly-cloudy.svg"
+              alt="A cloud and sun icon indicating partly cloudy skies"
             />
             <img
               id="hr3-rain"
-              class="forecast-icon icon-raining"
+              class="forecast-icon"
               src="/img/rain.svg"
+              alt="A cloud icon with falling rain indicating rainy weather"
             />
             <img
               id="hr3-thunderstorm"
-              class="forecast-icon icon-raining"
+              class="forecast-icon"
               src="/img/thunderstorm.svg"
+              alt="A dark grey cloud icon with lightning bolts indicating stormy weather"
             />
             <img
               id="hr3-thunderstorm-with-rain"
-              class="forecast-icon icon-raining"
+              class="forecast-icon"
               src="/img/thunderstorm-with-rain.svg"
+              alt="A dark grey cloud icon with lightning bolts and rain indicating stormy and rainy weather"
             />
             <img
               id="hr3-clear-night"
-              class="forecast-icon icon-raining"
+              class="forecast-icon"
               src="/img/moon.svg"
+              alt="A crescent moon icon indicating clear skies"
             />
           </div>
         </div>

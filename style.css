@@ -419,7 +419,7 @@ input[type="search"]::-webkit-search-results-decoration {
   visibility: visible;
 }
 
-@keyframes slideIn {
+@keyframes fadeIn {
   0% {
     opacity: 0;
   }

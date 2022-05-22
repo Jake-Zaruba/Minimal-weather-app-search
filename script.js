@@ -1,4 +1,16 @@
 "use strict";
+////////////////////////
+/////SERVICE WORKER/////
+////////////////////////
+
+if (navigator.serviceWorker) {
+  window.addEventListener(`load`, () => {
+    navigator.serviceWorker
+      .register(`../sw-cached-pages.js`)
+      .then((reg) => console.log(`Service worker registered`))
+      .catch((err) => console.log(`Service worker error: ${err}`));
+  });
+}
 
 //////////////////////////////
 /////FORECAST BY LOCATION/////
@@ -871,6 +883,11 @@ document.getElementById(`search`).addEventListener(`keypress`, (e) => {
 document.querySelector(`.search-icon`).addEventListener(`click`, () => {
   weather.searchWeather();
   window.scrollTo({ top: 0, behavior: `smooth` });
+});
+
+document.querySelector(`.options`).addEventListener(`click`, () => {
+  weather.searchWeather();
+  window.scrollTo({ top: 1000, behavior: `smooth` });
 });
 
 let weatherBackground = document.querySelector(`.element-container`);
