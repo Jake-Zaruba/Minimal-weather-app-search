@@ -25,6 +25,13 @@ let forecastHrNowEl = document.getElementById(`forecast-hr-now`);
 let forecastHr1El = document.getElementById(`forecast-hr-1`);
 let forecastHr2El = document.getElementById(`forecast-hr-2`);
 let forecastHr3El = document.getElementById(`forecast-hr-3`);
+/////ADVANCED DATA/////
+let feelsLike = document.getElementById(`feels-like`);
+let highLow = document.getElementById(`high-low`);
+let humidity = document.getElementById(`humidity`);
+let windSpeed = document.getElementById(`wind-speed`);
+let sunriseTime = document.getElementById(`sunrise-time`);
+let sunsetTime = document.getElementById(`sunset-time`);
 let lon;
 let lat;
 
@@ -431,6 +438,21 @@ document.querySelector(`.location-icon`).addEventListener(`click`, () => {
               `hr3-partly-cloudy`
             ).style.display = `block`;
           }
+          //////////////////////////
+          /////ADVANCED DISPLAY/////
+          //////////////////////////
+          feelsLike.innerHTML = `&nbsp;` + data.current.feelslike + `&deg;`;
+          highLow.innerHTML =
+            data.forecast[currentWeatherDate].maxtemp +
+            `&deg;` +
+            `/` +
+            data.forecast[currentWeatherDate].mintemp +
+            `&deg;`;
+          humidity.innerHTML = data.current.humidity + `%`;
+          windSpeed.innerHTML = data.current.wind_speed + ` mph`;
+          sunriseTime.innerHTML =
+            data.forecast[currentWeatherDate].astro.sunrise;
+          sunsetTime.innerHTML = data.forecast[currentWeatherDate].astro.sunset;
         });
     });
   } else {
@@ -816,6 +838,17 @@ let weather = {
     ) {
       document.getElementById(`hr3-partly-cloudy`).style.display = `block`;
     }
+    feelsLike.innerHTML = `&nbsp;` + data.current.feelslike + `&deg;`;
+    highLow.innerHTML =
+      data.forecast[currentWeatherDate].maxtemp +
+      `&deg;` +
+      `/` +
+      data.forecast[currentWeatherDate].mintemp +
+      `&deg;`;
+    humidity.innerHTML = data.current.humidity + `%`;
+    windSpeed.innerHTML = data.current.wind_speed + ` mph`;
+    sunriseTime.innerHTML = data.forecast[currentWeatherDate].astro.sunrise;
+    sunsetTime.innerHTML = data.forecast[currentWeatherDate].astro.sunset;
     document.querySelectorAll(`.loading`).forEach((entries) => {
       entries.classList.remove(`loading`);
     });
@@ -964,6 +997,9 @@ displayDay.innerHTML = dayOfMonth + `${dayEnding}`;
 
 document.querySelector(`.options`).addEventListener(`click`, () => {
   document.querySelector(`.advanced-container`).classList.toggle(`show`);
+  document.getElementById(`forecast-box`).classList.toggle(`show-advanced`);
+  document.getElementById(`hill-foreground`).classList.toggle(`hide-hills`);
+  document.getElementById(`hill-middle`).classList.toggle(`hide-hills`);
 });
 
 //////////////////////////////////////////////////////////////
