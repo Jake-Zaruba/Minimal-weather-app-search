@@ -3,7 +3,7 @@
   "short_name": "Minimal Weather App",
   "start_url": ".",
   "background_color": "#fff8d2",
-  "theme_color": "#78972b",
+  "theme_color": "#CDE097",
   "display": "standalone",
   "icons": [
     {
