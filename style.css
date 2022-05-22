@@ -330,6 +330,74 @@ input[type="search"]::-webkit-search-results-decoration {
   justify-self: center;
 }
 
+.advanced-container {
+  margin-top: 0.8rem;
+  overflow: visible;
+  opacity: 0;
+  visibility: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  height: 100%;
+  width: 100%;
+  /* background-color: aqua; */
+  grid-column: 1;
+  grid-row: 4 / span 5;
+  z-index: 10;
+  transition: all 0.3s;
+}
+
+.advanced-box {
+  height: 70%;
+  width: 80%;
+  align-self: center;
+  justify-self: center;
+  border-radius: 2.5rem;
+  background-color: rgba(215, 215, 215, 0.4);
+  border: solid 1px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+}
+
+.advanced-data {
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.advanced-sub-data {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 600;
+  margin-top: 1.6rem;
+}
+
+.options {
+  position: absolute;
+  top: 1.5%;
+  left: 2%;
+  height: 2.4rem;
+  width: 2.4rem;
+  stroke: white;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .loading {
   visibility: hidden;
 }
