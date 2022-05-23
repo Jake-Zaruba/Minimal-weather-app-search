@@ -292,8 +292,8 @@ input[type="search"]::-webkit-search-results-decoration {
   z-index: 2;
   justify-self: flex-end;
   overflow: hidden;
-  padding: 2rem 0.65rem 0 0;
-  transform: scale(1.11);
+  padding-top: 2rem;
+  /* transform: scale(1.11); */
   /* opacity: 1; */
   transition: all 0.5s;
 }
@@ -431,7 +431,7 @@ input[type="search"]::-webkit-search-results-decoration {
   stroke: #78972b;
   opacity: 0.8;
   cursor: pointer;
-  display: none;
+  /* display: none; */
 }
 
 .show {

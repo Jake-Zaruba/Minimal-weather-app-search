@@ -2,7 +2,7 @@
 ////////////////////////
 /////SERVICE WORKER/////
 ////////////////////////
-
+let downloadBtn = document.querySelector(`.download`);
 if (navigator.serviceWorker) {
   window.addEventListener(`load`, () => {
     navigator.serviceWorker
@@ -10,12 +10,11 @@ if (navigator.serviceWorker) {
       .then((reg) => console.log())
       .catch((err) => console.log(`Service worker error: ${err}`));
   });
-  let downloadBtn = document.querySelector(`.download`);
+
   let deferredPrompt;
   window.addEventListener(`beforeinstallprompt`, (e) => {
     e.preventDefault();
     deferredPrompt = e;
-    console.log(`hi`);
     downloadBtn.style.display = `block`;
     downloadBtn.addEventListener(`click`, (e) => {
       deferredPrompt.prompt();
@@ -1058,6 +1057,7 @@ if (time > 19 || time < 6) {
   sun.style.display = `none`;
   sunGlow.style.display = `none`;
   options.style.stroke = `white`;
+  downloadBtn.style.stroke = `white`;
   cloudGlow.style.display = `block`;
   stars.style.display = `block`;
   moon.style.display = `block`;
