@@ -7,13 +7,16 @@ if (navigator.serviceWorker) {
   window.addEventListener(`load`, () => {
     navigator.serviceWorker
       .register(`../sw-cached-site.js`)
-      .then((reg) => console.log(`Service worker registered`))
+      .then((reg) => console.log())
       .catch((err) => console.log(`Service worker error: ${err}`));
   });
 }
 
-let downloadBtn = document.querySelector(`.download`);
+////////////////////////////////
+/////PWA INSTALL PERMISSION/////
+////////////////////////////////
 
+let downloadBtn = document.querySelector(`.download`);
 let deferredPrompt;
 window.addEventListener(`beforeinstallprompt`, (e) => {
   e.preventDefault();
@@ -66,7 +69,12 @@ let sunsetTime = document.getElementById(`sunset-time`);
 let lon;
 let lat;
 
+/////FETCH & DISPLAY/////
+
 document.querySelector(`.location-icon`).addEventListener(`click`, () => {
+  document.querySelectorAll(`.forecast-icon`).forEach((entries) => {
+    entries.style.display = `none`;
+  });
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
       lon = position.coords.longitude;
@@ -80,9 +88,7 @@ document.querySelector(`.location-icon`).addEventListener(`click`, () => {
           document.querySelectorAll(`.loading`).forEach((entries) => {
             entries.classList.remove(`loading`);
           });
-          document.querySelectorAll(`.forecast-icon`).forEach((entries) => {
-            entries.style.display = `none`;
-          });
+
           currentCity.innerHTML = data.location.name;
           let currentLocation = data.location.name;
           let temp = data.current.temperature;
@@ -482,7 +488,7 @@ document.querySelector(`.location-icon`).addEventListener(`click`, () => {
             `/` +
             data.forecast[currentWeatherDate].mintemp +
             `&deg;`;
-          humidity.innerHTML = data.current.humidity + `%`;
+          humidity.innerHTML = `&nbsp;` + data.current.humidity + `%`;
           windSpeed.innerHTML = data.current.wind_speed + ` mph`;
           sunriseTime.innerHTML =
             data.forecast[currentWeatherDate].astro.sunrise;
@@ -908,7 +914,6 @@ document.querySelector(`.search-icon`).addEventListener(`click`, () => {
 });
 
 document.querySelector(`.options`).addEventListener(`click`, () => {
-  weather.searchWeather();
   window.scrollTo({ top: 1000, behavior: `smooth` });
 });
 
@@ -916,8 +921,10 @@ let weatherBackground = document.querySelector(`.element-container`);
 let foregroundHill = document.getElementById(`hill-foreground-fill`);
 let middleHill = document.getElementById(`hill-middle-fill`);
 let backgroundHill = document.getElementById(`hill-background-fill`);
+let options = document.querySelector(`.options`);
 let fog = document.getElementById(`fog`);
 let moon = document.getElementById(`moon`);
+let stars = document.getElementById(`stars`);
 let moonGlow = document.getElementById(`moon-glow`);
 let sun = document.getElementById(`sun`);
 let sunGlow = document.getElementById(`sun-glow`);
@@ -1052,7 +1059,9 @@ if (time > 19 || time < 6) {
   backgroundHill.style.fill = `#7BBBBF`;
   sun.style.display = `none`;
   sunGlow.style.display = `none`;
+  options.style.stroke = `white`;
   cloudGlow.style.display = `block`;
+  stars.style.display = `block`;
   moon.style.display = `block`;
   moonGlow.style.display = `block`;
   fog.style.display = `block`;
