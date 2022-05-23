@@ -28,6 +28,10 @@ if (navigator.serviceWorker) {
   });
 }
 
+const downloadTimeout = setTimeout(() => {
+  downloadBtn.classList.add(`hide`);
+}, 10000);
+
 ////////////////////////////////
 /////PWA INSTALL PERMISSION/////
 ////////////////////////////////
@@ -919,6 +923,7 @@ let foregroundHill = document.getElementById(`hill-foreground-fill`);
 let middleHill = document.getElementById(`hill-middle-fill`);
 let backgroundHill = document.getElementById(`hill-background-fill`);
 let options = document.querySelector(`.options`);
+let closeIcon = document.querySelector(`.close-icon`);
 let fog = document.getElementById(`fog`);
 let moon = document.getElementById(`moon`);
 let stars = document.getElementById(`stars`);
@@ -1043,6 +1048,15 @@ document.querySelector(`.options`).addEventListener(`click`, () => {
   document.getElementById(`forecast-box`).classList.toggle(`show-advanced`);
   document.getElementById(`hill-foreground`).classList.toggle(`hide-hills`);
   document.getElementById(`hill-middle`).classList.toggle(`hide-hills`);
+  closeIcon.classList.toggle(`show`);
+});
+
+closeIcon.addEventListener(`click`, () => {
+  closeIcon.classList.remove(`show`);
+  document.querySelector(`.advanced-container`).classList.remove(`show`);
+  document.getElementById(`forecast-box`).classList.remove(`show-advanced`);
+  document.getElementById(`hill-foreground`).classList.remove(`hide-hills`);
+  document.getElementById(`hill-middle`).classList.remove(`hide-hills`);
 });
 
 //////////////////////////////////////////////////////////////
@@ -1057,6 +1071,7 @@ if (time > 19 || time < 6) {
   sun.style.display = `none`;
   sunGlow.style.display = `none`;
   options.style.stroke = `white`;
+  closeIcon.style.stroke = `white`;
   downloadBtn.style.stroke = `white`;
   cloudGlow.style.display = `block`;
   stars.style.display = `block`;
