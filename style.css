@@ -414,6 +414,18 @@ input[type="search"]::-webkit-search-results-decoration {
   cursor: pointer;
 }
 
+.download {
+  position: absolute;
+  top: 1.5%;
+  right: 2%;
+  height: 2.4rem;
+  width: 2.4rem;
+  stroke: #78972b;
+  opacity: 0.8;
+  cursor: pointer;
+  display: none;
+}
+
 .show {
   opacity: 1;
   visibility: visible;
