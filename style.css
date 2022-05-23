@@ -13,8 +13,6 @@ body {
   font-family: "Inter", sans-serif;
   color: white;
   background: rgb(227, 226, 226);
-  /* overflow: hidden; */
-  /* max-width: 39rem; */
 }
 
 .app-container {
@@ -353,17 +351,22 @@ input[type="search"]::-webkit-search-results-decoration {
   position: absolute;
   top: -3.09rem;
   left: 39.5%;
-  opacity: 0;
+  opacity: 0.4;
   visibility: hidden;
   z-index: 10;
   transition: all 0.3s 0.5s;
 } */
 
 /* #forecast-bumpout {
-  position: relative;
+  position: absolute;
   width: 5rem;
-  height: 10rem;
-  /* overflow: hidden;
+  height: 4rem;
+  top: -4.1rem;
+  left: 41.3%;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  background-color: rgba(72, 208, 253, 0.4);
+  z-index: 15;
 } */
 
 /* #forecast-bumpout:before {
