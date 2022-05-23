@@ -10,36 +10,34 @@ if (navigator.serviceWorker) {
       .then((reg) => console.log())
       .catch((err) => console.log(`Service worker error: ${err}`));
   });
+  let downloadBtn = document.querySelector(`.download`);
+  let deferredPrompt;
+  window.addEventListener(`beforeinstallprompt`, (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    console.log(`hi`);
+    downloadBtn.style.display = `block`;
+    downloadBtn.addEventListener(`click`, (e) => {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === `accepted`) {
+          console.log(`User accepted the A2HS prompt`);
+        }
+        deferredPrompt = null;
+      });
+    });
+  });
 }
 
 ////////////////////////////////
 /////PWA INSTALL PERMISSION/////
 ////////////////////////////////
 
-let downloadBtn = document.querySelector(`.download`);
-let deferredPrompt;
-window.addEventListener(`beforeinstallprompt`, (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-  downloadBtn.style.display = `block`;
-});
-
-downloadBtn.addEventListener(`click`, (e) => {
-  deferredPrompt.prompt();
-  deferredPrompt.userChoice.then((choiceResult) => {
-    if (choiceResult.outcome === `accepted`) {
-      console.log(`User accepted the A2HS prompt`);
-    }
-    deferredPrompt = null;
-  });
-});
-
 //////////////////////////////
 /////FORECAST BY LOCATION/////
 //////////////////////////////
 
 /////Current Weather/////
-// let currentCity = document.querySelector(`.city`);
 let d = new Date();
 console.log(d);
 let weatherDay = d.getDate();
@@ -931,11 +929,11 @@ let sunGlow = document.getElementById(`sun-glow`);
 let sunset = document.getElementById(`sunset`);
 let sunsetGlow = document.getElementById(`sunset-glow`);
 let cloudGlow = document.getElementById(`cloud-glow`);
-// let city = document.querySelector(`.city`);
 let displayDate = document.querySelectorAll(`.date`);
 
-//////////////////////////////////////////////////////////////
-//DAY OF WEEK CHANGES///////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////
+/////DAY OF WEEK CHANGES/////
+/////////////////////////////
 
 let dayOfWeek = document.getElementById(`day`);
 let day = d.getDay();
