@@ -80,6 +80,9 @@ document.querySelector(`.location-icon`).addEventListener(`click`, () => {
           document.querySelectorAll(`.loading`).forEach((entries) => {
             entries.classList.remove(`loading`);
           });
+          document.querySelectorAll(`.forecast-icon`).forEach((entries) => {
+            entries.style.display = `none`;
+          });
           currentCity.innerHTML = data.location.name;
           let currentLocation = data.location.name;
           let temp = data.current.temperature;
