@@ -431,6 +431,7 @@ input[type="search"]::-webkit-search-results-decoration {
   stroke: #78972b;
   opacity: 0.8;
   cursor: pointer;
+  z-index: 110;
   /* display: none; */
 }
 
