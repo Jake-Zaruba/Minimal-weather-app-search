@@ -97,81 +97,107 @@ document.querySelector(`.location-icon`).addEventListener(`click`, () => {
           /////MAIN DISPLAY/////
           document.getElementById(`search`).value = currentLocation;
           currentTemp.innerHTML = `&nbsp;` + temp + `&deg;`;
-          const formatForecastTime = function (hour) {
-            if (hour === 25) {
-              return 1;
-            } else if (hour === 26) {
-              return 2;
-            } else if (hour === 3) {
-              return 3;
-            } else if (hour === 4) {
-              return 4;
-            } else if (hour === 5) {
-              return 5;
-            } else if (hour === 6) {
-              return 6;
-            } else if (hour === 7) {
-              return 7;
-            } else if (hour === 8) {
-              return 8;
-            } else if (hour === 9) {
-              return 9;
-            } else if (hour === 10) {
-              return 10;
-            } else if (hour === 11) {
-              return 11;
-            } else if (hour === 12) {
-              return 12;
-            } else if (hour === 13) {
-              return 13;
-            } else if (hour === 14) {
-              return 14;
-            } else if (hour === 15) {
-              return 15;
-            } else if (hour === 16) {
-              return 16;
-            } else if (hour === 17) {
-              return 17;
-            } else if (hour === 18) {
-              return 18;
-            } else if (hour === 19) {
-              return 19;
-            } else if (hour === 20) {
-              return 20;
-            } else if (hour === 21) {
-              return 21;
-            } else if (hour === 22) {
-              return 22;
-            } else if (hour === 23) {
-              return 23;
-            } else if (hour === 0) {
+          // const formatForecastTime = function (hour) {
+          //   // if (hour === 25) {
+          //   //   return 1;
+          //   // } else if (hour === 26) {
+          //   //   return 2;
+          //   // } else if (hour === 3) {
+          //   //   return 3;
+          //   // } else if (hour === 4) {
+          //   //   return 4;
+          //   // } else if (hour === 5) {
+          //   //   return 5;
+          //   // } else if (hour === 6) {
+          //   //   return 6;
+          //   // } else if (hour === 7) {
+          //   //   return 7;
+          //   // } else if (hour === 8) {
+          //   //   return 8;
+          //   // } else if (hour === 9) {
+          //   //   return 9;
+          //   // } else if (hour === 10) {
+          //   //   return 10;
+          //   // } else if (hour === 11) {
+          //   //   return 11;
+          //   // } else if (hour === 12) {
+          //   //   return 12;
+          //   // } else if (hour === 13) {
+          //   //   return 13;
+          //   // } else if (hour === 14) {
+          //   //   return 14;
+          //   // } else if (hour === 15) {
+          //   //   return 15;
+          //   // } else if (hour === 16) {
+          //   //   return 16;
+          //   // } else if (hour === 17) {
+          //   //   return 17;
+          //   // } else if (hour === 18) {
+          //   //   return 18;
+          //   // } else if (hour === 19) {
+          //   //   return 19;
+          //   // } else if (hour === 20) {
+          //   //   return 20;
+          //   // } else if (hour === 21) {
+          //   //   return 21;
+          //   // } else if (hour === 22) {
+          //   //   return 22;
+          //   // } else if (hour === 23) {
+          //   //   return 23;
+          //   // } else if (hour === 24) {
+          //   //   return 23;
+          //   // } else if (hour === 0) {
+          //   //   return 0;
+          //   // } else {
+          //   //   return `ope`;
+          //   // }
+          // };
+          let formatForecastTime = function (hour) {
+            if (time === 24) {
               return 0;
+            } else if (time === 25) {
+              return 1;
+            } else if (time === 26) {
+              return 2;
             } else {
-              return `ope`;
+              return time;
             }
           };
+
           let nowTemp = data.current.temperature;
           let hr1Temp =
             data.forecast[currentWeatherDate].hourly[
-              formatForecastTime(time + 1)
+              formatForecastTime(time) + 1
             ].temperature;
-          console.log(hr1Temp);
+
           let hr2Temp =
             data.forecast[currentWeatherDate].hourly[
-              formatForecastTime(time + 2)
+              formatForecastTime(time) + 2
             ].temperature;
-          console.log(hr2Temp);
+
           let hr3Temp =
             data.forecast[currentWeatherDate].hourly[
-              formatForecastTime(time + 3)
+              formatForecastTime(time) + 3
             ].temperature;
-          console.log(hr3Temp);
+
+          //////////////////////////////////////
+          /////TESTING MY TIME FUNCTION/////////
+          //////////////////////////////////////
+          let theTime1 = data.forecast[currentWeatherDate].hourly[1].time;
+          console.log(time + 2);
+          console.log(formatForecastTime(time) + 2);
+          console.log(theTime1);
+          /////////////////////////////////////////////////////
+          /////IT FINALLY WORKS LOL TIME TO UPDATE THE APP/////
+          /////////////////////////////////////////////////////
           now.innerHTML = `&nbsp;` + nowTemp + `&deg;`;
           hr1.innerHTML = `&nbsp;` + hr1Temp + `&deg;`;
           hr2.innerHTML = `&nbsp;` + hr2Temp + `&deg;`;
           hr3.innerHTML = `&nbsp;` + hr3Temp + `&deg;`;
 
+          ////////////////////////
           /////FORECAST HOURS/////
+          ////////////////////////
 
           let forecastHr1 = forecastTime + 1;
           let forecastHr2 = forecastTime + 2;
@@ -924,6 +950,7 @@ let middleHill = document.getElementById(`hill-middle-fill`);
 let backgroundHill = document.getElementById(`hill-background-fill`);
 let options = document.querySelector(`.options`);
 let closeIcon = document.querySelector(`.close-icon`);
+let bumpout = document.getElementById(`forecast-bumpout`);
 let fog = document.getElementById(`fog`);
 let moon = document.getElementById(`moon`);
 let stars = document.getElementById(`stars`);
@@ -1048,11 +1075,13 @@ document.querySelector(`.options`).addEventListener(`click`, () => {
   document.getElementById(`forecast-box`).classList.toggle(`show-advanced`);
   document.getElementById(`hill-foreground`).classList.toggle(`hide-hills`);
   document.getElementById(`hill-middle`).classList.toggle(`hide-hills`);
+  bumpout.classList.toggle(`show`);
   closeIcon.classList.toggle(`show`);
 });
 
 closeIcon.addEventListener(`click`, () => {
   closeIcon.classList.remove(`show`);
+  bumpout.classList.remove(`show`);
   document.querySelector(`.advanced-container`).classList.remove(`show`);
   document.getElementById(`forecast-box`).classList.remove(`show-advanced`);
   document.getElementById(`hill-foreground`).classList.remove(`hide-hills`);
