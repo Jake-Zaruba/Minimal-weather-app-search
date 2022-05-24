@@ -155,7 +155,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 ::placeholder {
-  background-color: rgba(255, 224, 112, 0.196);
+  /* background-color: rgba(255, 224, 112, 0.196); */
   opacity: 0.5;
   color: #78972b;
 }
@@ -328,6 +328,7 @@ input[type="search"]::-webkit-search-results-decoration {
   border-radius: 2.5rem;
   border: solid 1px rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(0.6rem);
+  -webkit-backdrop-filter: blur(0.6rem);
   grid-column: 1;
   grid-row: 1;
   z-index: 1;
@@ -343,6 +344,7 @@ input[type="search"]::-webkit-search-results-decoration {
   border-radius: 2.5rem;
   border: solid 1px rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(0.6rem);
+  -webkit-backdrop-filter: blur(0.6rem);
   grid-column: 1;
   grid-row: 3 / span 4;
   z-index: 1;
