@@ -19,6 +19,8 @@
   <body>
     <div class="app-container">
       <div class="element-container">
+        <!-- DOWNLOAD & ADVANCED DATA BUTTONS -->
+
         <svg
           class="options"
           title="Three dots stacked vertically indicating a menu"
@@ -50,6 +52,9 @@
             d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
           />
         </svg>
+
+        <!-- ILLUSTRATIONS -->
+
         <img id="sun" src="/img/sun.svg" alt="Yellow sun icon" />
         <img
           id="sun-glow"
@@ -173,8 +178,13 @@
           />
         </svg>
 
+        <!-- CURRENT TEMP -->
+
         <h1 class="main-temp loading">&nbsp;67&deg;</h1>
         <div id="main-temp-box"></div>
+
+        <!-- HOURLY FORECAST -->
+
         <div id="forecast-box">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -205,6 +215,9 @@
           </svg> -->
           <!-- <div id="forecast-bumpout"></div> -->
         </div>
+
+        <!-- CITY SEARCH -->
+
         <svg
           class="location-icon"
           title="A small location pin icon"
@@ -250,12 +263,18 @@
           autocomplete="off"
           class="city"
         />
+
+        <!-- DATE -->
+
         <div class="date-container">
           <h3 id="day" class="date">MONDAY</h3>
           <div class="date date-line">&nbsp;|&nbsp;</div>
           <div id="month" class="date">MAY</div>
           <div id="day-of-month" class="date">14th</div>
         </div>
+
+        <!-- FORECAST ICONS -->
+
         <div class="forecast-container">
           <div class="forecast-current loading">
             <h2 id="forecast-hr-now" class="forecast-time">now</h2>
@@ -306,6 +325,12 @@
               id="hr0-clear-night"
               class="forecast-icon"
               src="/img/moon.svg"
+              alt="A crescent moon icon indicating clear skies"
+            />
+            <img
+              id="hr0-partly-cloudy-night"
+              class="forecast-icon"
+              src="/img/partly-cloudy-night.svg"
               alt="A crescent moon icon indicating clear skies"
             />
           </div>
@@ -361,6 +386,12 @@
               src="/img/moon.svg"
               alt="A dark grey cloud icon with lightning bolts and rain indicating stormy and rainy weather"
             />
+            <img
+              id="hr1-partly-cloudy-night"
+              class="forecast-icon"
+              src="/img/partly-cloudy-night.svg"
+              alt="A crescent moon icon indicating clear skies"
+            />
           </div>
           <div class="forecast-2hr loading">
             <h2 id="forecast-hr-2" class="forecast-time">1pm</h2>
@@ -411,6 +442,12 @@
               id="hr2-clear-night"
               class="forecast-icon"
               src="/img/moon.svg"
+              alt="A crescent moon icon indicating clear skies"
+            />
+            <img
+              id="hr2-partly-cloudy-night"
+              class="forecast-icon"
+              src="/img/partly-cloudy-night.svg"
               alt="A crescent moon icon indicating clear skies"
             />
           </div>
@@ -465,8 +502,17 @@
               src="/img/moon.svg"
               alt="A crescent moon icon indicating clear skies"
             />
+            <img
+              id="hr3-partly-cloudy-night"
+              class="forecast-icon"
+              src="/img/partly-cloudy-night.svg"
+              alt="A crescent moon icon indicating clear skies"
+            />
           </div>
         </div>
+
+        <!-- ADVANCED DATA -->
+
         <div class="advanced-container">
           <div class="advanced-box">
             <h2 class="advanced-data">FEELS LIKE</h2>

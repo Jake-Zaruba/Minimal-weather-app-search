@@ -76,6 +76,7 @@ body {
 #hr0-thunderstorm,
 #hr0-thunderstorm-with-rain,
 #hr0-clear-night,
+#hr0-partly-cloudy-night,
 #hr1-sunny,
 #hr1-cloudy,
 #hr1-rain,
@@ -84,6 +85,7 @@ body {
 #hr1-thunderstorm,
 #hr1-thunderstorm-with-rain,
 #hr1-clear-night,
+#hr1-partly-cloudy-night,
 #hr2-sunny,
 #hr2-cloudy,
 #hr2-rain,
@@ -92,6 +94,7 @@ body {
 #hr2-thunderstorm,
 #hr2-thunderstorm-with-rain,
 #hr2-clear-night,
+#hr2-partly-cloudy-night,
 #hr3-sunny,
 #hr3-cloudy,
 #hr3-rain,
@@ -99,7 +102,8 @@ body {
 #hr3-partly-cloudy,
 #hr3-thunderstorm,
 #hr3-thunderstorm-with-rain,
-#hr3-clear-night {
+#hr3-clear-night,
+#hr3-partly-cloudy-night {
   display: none;
 }
 

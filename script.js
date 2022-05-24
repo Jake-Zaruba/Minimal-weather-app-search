@@ -97,96 +97,42 @@ document.querySelector(`.location-icon`).addEventListener(`click`, () => {
           /////MAIN DISPLAY/////
           document.getElementById(`search`).value = currentLocation;
           currentTemp.innerHTML = `&nbsp;` + temp + `&deg;`;
-          // const formatForecastTime = function (hour) {
-          //   // if (hour === 25) {
-          //   //   return 1;
-          //   // } else if (hour === 26) {
-          //   //   return 2;
-          //   // } else if (hour === 3) {
-          //   //   return 3;
-          //   // } else if (hour === 4) {
-          //   //   return 4;
-          //   // } else if (hour === 5) {
-          //   //   return 5;
-          //   // } else if (hour === 6) {
-          //   //   return 6;
-          //   // } else if (hour === 7) {
-          //   //   return 7;
-          //   // } else if (hour === 8) {
-          //   //   return 8;
-          //   // } else if (hour === 9) {
-          //   //   return 9;
-          //   // } else if (hour === 10) {
-          //   //   return 10;
-          //   // } else if (hour === 11) {
-          //   //   return 11;
-          //   // } else if (hour === 12) {
-          //   //   return 12;
-          //   // } else if (hour === 13) {
-          //   //   return 13;
-          //   // } else if (hour === 14) {
-          //   //   return 14;
-          //   // } else if (hour === 15) {
-          //   //   return 15;
-          //   // } else if (hour === 16) {
-          //   //   return 16;
-          //   // } else if (hour === 17) {
-          //   //   return 17;
-          //   // } else if (hour === 18) {
-          //   //   return 18;
-          //   // } else if (hour === 19) {
-          //   //   return 19;
-          //   // } else if (hour === 20) {
-          //   //   return 20;
-          //   // } else if (hour === 21) {
-          //   //   return 21;
-          //   // } else if (hour === 22) {
-          //   //   return 22;
-          //   // } else if (hour === 23) {
-          //   //   return 23;
-          //   // } else if (hour === 24) {
-          //   //   return 23;
-          //   // } else if (hour === 0) {
-          //   //   return 0;
-          //   // } else {
-          //   //   return `ope`;
-          //   // }
-          // };
+
           let formatForecastTime = function (hour) {
-            if (time === 24) {
+            if (hour === 24) {
               return 0;
-            } else if (time === 25) {
+            } else if (hour === 25) {
               return 1;
-            } else if (time === 26) {
+            } else if (hour === 26) {
               return 2;
             } else {
-              return time;
+              return hour;
             }
           };
 
           let nowTemp = data.current.temperature;
+          let hr1Time = formatForecastTime(time + 1);
+          let hr2Time = formatForecastTime(time + 2);
+          let hr3Time = formatForecastTime(time + 3);
+
           let hr1Temp =
-            data.forecast[currentWeatherDate].hourly[
-              formatForecastTime(time) + 1
-            ].temperature;
+            data.forecast[currentWeatherDate].hourly[hr1Time].temperature;
 
           let hr2Temp =
-            data.forecast[currentWeatherDate].hourly[
-              formatForecastTime(time) + 2
-            ].temperature;
+            data.forecast[currentWeatherDate].hourly[hr2Time].temperature;
 
           let hr3Temp =
-            data.forecast[currentWeatherDate].hourly[
-              formatForecastTime(time) + 3
-            ].temperature;
+            data.forecast[currentWeatherDate].hourly[hr3Time].temperature;
 
-          //////////////////////////////////////
-          /////TESTING MY TIME FUNCTION/////////
-          //////////////////////////////////////
-          let theTime1 = data.forecast[currentWeatherDate].hourly[1].time;
-          console.log(time + 2);
-          console.log(formatForecastTime(time) + 2);
-          console.log(theTime1);
+          // //////////////////////////////////////
+          // /////TESTING MY TIME FUNCTION/////////
+          // //////////////////////////////////////
+
+          // let theTime1 = data.forecast[currentWeatherDate].hourly[1].time;
+          // console.log(time + 2);
+          // console.log(formatForecastTime(time) + 3);
+          // console.log(theTime1);
+
           /////////////////////////////////////////////////////
           /////IT FINALLY WORKS LOL TIME TO UPDATE THE APP/////
           /////////////////////////////////////////////////////
@@ -263,19 +209,24 @@ document.querySelector(`.location-icon`).addEventListener(`click`, () => {
           /////FORECAST ICONS/////
           ////////////////////////
 
+          let isDay;
+
+          if (time < 20 && time > 5) {
+            isDay = true;
+          } else if (time > 20 || time < 6) {
+            isDay = false;
+          }
+
+          console.log(isDay);
+          //////////////////////
           /////CURRENT HOUR/////
+          //////////////////////
+          console.log(time);
           if (data.current.weather_code === 122) {
             document.getElementById(`hr0-cloudy`).style.display = `block`;
-          } else if (
-            data.current.weather_code === 113 &&
-            time < 20 &&
-            time > 6
-          ) {
+          } else if (data.current.weather_code === 113 && isDay === true) {
             document.getElementById(`hr0-sunny`).style.display = `block`;
-          } else if (
-            (data.current.weather_code === 113 && time > 20) ||
-            (data.current.weather_code === 113 && time < 7)
-          ) {
+          } else if (data.current.weather_code === 113 && isDay === false) {
             document.getElementById(`hr0-clear-night`).style.display = `block`;
           } else if (
             data.current.weather_code === 200 ||
@@ -311,15 +262,26 @@ document.querySelector(`.location-icon`).addEventListener(`click`, () => {
           ) {
             document.getElementById(`hr0-rain`).style.display = `block`;
           } else if (
-            data.current.weather_code === 116 ||
-            data.current.weather_code === 119 ||
-            data.current.weather_code === 176 ||
-            data.current.weather_code === 353 ||
-            data.current.weather_code === 356 ||
-            data.current.weather_code === 359
+            (data.current.weather_code === 116 && isDay === true) ||
+            (data.current.weather_code === 119 && isDay === true) ||
+            (data.current.weather_code === 176 && isDay === true) ||
+            (data.current.weather_code === 353 && isDay === true) ||
+            (data.current.weather_code === 356 && isDay === true) ||
+            (data.current.weather_code === 359 && isDay === true)
           ) {
             document.getElementById(
               `hr0-partly-cloudy`
+            ).style.display = `block`;
+          } else if (
+            (data.current.weather_code === 116 && isDay === false) ||
+            (data.current.weather_code === 119 && isDay === false) ||
+            (data.current.weather_code === 176 && isDay === false) ||
+            (data.current.weather_code === 353 && isDay === false) ||
+            (data.current.weather_code === 356 && isDay === false) ||
+            (data.current.weather_code === 359 && isDay === false)
+          ) {
+            document.getElementById(
+              `hr0-partly-cloudy-night`
             ).style.display = `block`;
           }
           ////////////////
@@ -327,16 +289,9 @@ document.querySelector(`.location-icon`).addEventListener(`click`, () => {
           ////////////////
           if (data.current.weather_code === 122) {
             document.getElementById(`hr1-cloudy`).style.display = `block`;
-          } else if (
-            data.current.weather_code === 113 &&
-            time < 20 &&
-            time > 6
-          ) {
+          } else if (data.current.weather_code === 113 && isDay === true) {
             document.getElementById(`hr1-sunny`).style.display = `block`;
-          } else if (
-            (data.current.weather_code === 113 && time > 20) ||
-            (data.current.weather_code === 113 && time < 7)
-          ) {
+          } else if (data.current.weather_code === 113 && isDay === false) {
             document.getElementById(`hr1-clear-night`).style.display = `block`;
           } else if (
             data.current.weather_code === 200 ||
@@ -372,15 +327,26 @@ document.querySelector(`.location-icon`).addEventListener(`click`, () => {
           ) {
             document.getElementById(`hr1-rain`).style.display = `block`;
           } else if (
-            data.current.weather_code === 116 ||
-            data.current.weather_code === 119 ||
-            data.current.weather_code === 176 ||
-            data.current.weather_code === 353 ||
-            data.current.weather_code === 356 ||
-            data.current.weather_code === 359
+            (data.current.weather_code === 116 && isDay === true) ||
+            (data.current.weather_code === 119 && isDay === true) ||
+            (data.current.weather_code === 176 && isDay === true) ||
+            (data.current.weather_code === 353 && isDay === true) ||
+            (data.current.weather_code === 356 && isDay === true) ||
+            (data.current.weather_code === 359 && isDay === true)
           ) {
             document.getElementById(
               `hr1-partly-cloudy`
+            ).style.display = `block`;
+          } else if (
+            (data.current.weather_code === 116 && isDay === false) ||
+            (data.current.weather_code === 119 && isDay === false) ||
+            (data.current.weather_code === 176 && isDay === false) ||
+            (data.current.weather_code === 353 && isDay === false) ||
+            (data.current.weather_code === 356 && isDay === false) ||
+            (data.current.weather_code === 359 && isDay === false)
+          ) {
+            document.getElementById(
+              `hr1-partly-cloudy-night`
             ).style.display = `block`;
           }
           ////////////////
@@ -388,16 +354,9 @@ document.querySelector(`.location-icon`).addEventListener(`click`, () => {
           ////////////////
           if (data.current.weather_code === 122) {
             document.getElementById(`hr2-cloudy`).style.display = `block`;
-          } else if (
-            data.current.weather_code === 113 &&
-            time < 20 &&
-            time > 6
-          ) {
+          } else if (data.current.weather_code === 113 && isDay === true) {
             document.getElementById(`hr2-sunny`).style.display = `block`;
-          } else if (
-            (data.current.weather_code === 113 && time > 20) ||
-            (data.current.weather_code === 113 && time < 7)
-          ) {
+          } else if (data.current.weather_code === 113 && isDay === false) {
             document.getElementById(`hr2-clear-night`).style.display = `block`;
           } else if (
             data.current.weather_code === 200 ||
@@ -433,15 +392,26 @@ document.querySelector(`.location-icon`).addEventListener(`click`, () => {
           ) {
             document.getElementById(`hr2-rain`).style.display = `block`;
           } else if (
-            data.current.weather_code === 116 ||
-            data.current.weather_code === 119 ||
-            data.current.weather_code === 176 ||
-            data.current.weather_code === 353 ||
-            data.current.weather_code === 356 ||
-            data.current.weather_code === 359
+            (data.current.weather_code === 116 && isDay === true) ||
+            (data.current.weather_code === 119 && isDay === true) ||
+            (data.current.weather_code === 176 && isDay === true) ||
+            (data.current.weather_code === 353 && isDay === true) ||
+            (data.current.weather_code === 356 && isDay === true) ||
+            (data.current.weather_code === 359 && isDay === true)
           ) {
             document.getElementById(
               `hr2-partly-cloudy`
+            ).style.display = `block`;
+          } else if (
+            (data.current.weather_code === 116 && isDay === false) ||
+            (data.current.weather_code === 119 && isDay === false) ||
+            (data.current.weather_code === 176 && isDay === false) ||
+            (data.current.weather_code === 353 && isDay === false) ||
+            (data.current.weather_code === 356 && isDay === false) ||
+            (data.current.weather_code === 359 && isDay === false)
+          ) {
+            document.getElementById(
+              `hr2-partly-cloudy-night`
             ).style.display = `block`;
           }
           ////////////////
@@ -449,16 +419,9 @@ document.querySelector(`.location-icon`).addEventListener(`click`, () => {
           ////////////////
           if (data.current.weather_code === 122) {
             document.getElementById(`hr3-cloudy`).style.display = `block`;
-          } else if (
-            data.current.weather_code === 113 &&
-            time < 20 &&
-            time > 6
-          ) {
+          } else if (data.current.weather_code === 113 && isDay === true) {
             document.getElementById(`hr3-sunny`).style.display = `block`;
-          } else if (
-            (data.current.weather_code === 113 && time > 20) ||
-            (data.current.weather_code === 113 && time < 7)
-          ) {
+          } else if (data.current.weather_code === 113 && isDay === false) {
             document.getElementById(`hr3-clear-night`).style.display = `block`;
           } else if (
             data.current.weather_code === 200 ||
@@ -494,15 +457,26 @@ document.querySelector(`.location-icon`).addEventListener(`click`, () => {
           ) {
             document.getElementById(`hr3-rain`).style.display = `block`;
           } else if (
-            data.current.weather_code === 116 ||
-            data.current.weather_code === 119 ||
-            data.current.weather_code === 176 ||
-            data.current.weather_code === 353 ||
-            data.current.weather_code === 356 ||
-            data.current.weather_code === 359
+            (data.current.weather_code === 116 && isDay === true) ||
+            (data.current.weather_code === 119 && isDay === true) ||
+            (data.current.weather_code === 176 && isDay === true) ||
+            (data.current.weather_code === 353 && isDay === true) ||
+            (data.current.weather_code === 356 && isDay === true) ||
+            (data.current.weather_code === 359 && isDay === true)
           ) {
             document.getElementById(
               `hr3-partly-cloudy`
+            ).style.display = `block`;
+          } else if (
+            (data.current.weather_code === 116 && isDay === false) ||
+            (data.current.weather_code === 119 && isDay === false) ||
+            (data.current.weather_code === 176 && isDay === false) ||
+            (data.current.weather_code === 353 && isDay === false) ||
+            (data.current.weather_code === 356 && isDay === false) ||
+            (data.current.weather_code === 359 && isDay === false)
+          ) {
+            document.getElementById(
+              `hr3-partly-cloudy-night`
             ).style.display = `block`;
           }
           //////////////////////////
@@ -550,72 +524,28 @@ let weather = {
     currentTemp.innerHTML = `&nbsp;` + temp + `&deg;`;
     /////FORECAST TEMPS/////
 
-    const formatForecastTime = function (hour) {
-      if (hour === 25) {
+    let formatForecastTime = function (hour) {
+      if (hour === 24) {
+        return 0;
+      } else if (hour === 25) {
         return 1;
       } else if (hour === 26) {
         return 2;
-      } else if (hour === 3) {
-        return 3;
-      } else if (hour === 4) {
-        return 4;
-      } else if (hour === 5) {
-        return 5;
-      } else if (hour === 6) {
-        return 6;
-      } else if (hour === 7) {
-        return 7;
-      } else if (hour === 8) {
-        return 8;
-      } else if (hour === 9) {
-        return 9;
-      } else if (hour === 10) {
-        return 10;
-      } else if (hour === 11) {
-        return 11;
-      } else if (hour === 12) {
-        return 12;
-      } else if (hour === 13) {
-        return 13;
-      } else if (hour === 14) {
-        return 14;
-      } else if (hour === 15) {
-        return 15;
-      } else if (hour === 16) {
-        return 16;
-      } else if (hour === 17) {
-        return 17;
-      } else if (hour === 18) {
-        return 18;
-      } else if (hour === 19) {
-        return 19;
-      } else if (hour === 20) {
-        return 20;
-      } else if (hour === 21) {
-        return 21;
-      } else if (hour === 22) {
-        return 22;
-      } else if (hour === 23) {
-        return 23;
-      } else if (hour === 0) {
-        return 0;
       } else {
-        return `ope`;
+        return hour;
       }
     };
+
     let nowTemp = data.current.temperature;
-    let hr1Temp =
-      data.forecast[currentWeatherDate].hourly[formatForecastTime(time + 1)]
-        .temperature;
-    console.log(hr1Temp);
-    let hr2Temp =
-      data.forecast[currentWeatherDate].hourly[formatForecastTime(time + 2)]
-        .temperature;
-    console.log(hr2Temp);
-    let hr3Temp =
-      data.forecast[currentWeatherDate].hourly[formatForecastTime(time + 3)]
-        .temperature;
-    console.log(hr3Temp);
+    let hr1Time = formatForecastTime(time + 1);
+    let hr2Time = formatForecastTime(time + 2);
+    let hr3Time = formatForecastTime(time + 3);
+
+    let hr1Temp = data.forecast[currentWeatherDate].hourly[hr1Time].temperature;
+
+    let hr2Temp = data.forecast[currentWeatherDate].hourly[hr2Time].temperature;
+
+    let hr3Temp = data.forecast[currentWeatherDate].hourly[hr3Time].temperature;
     now.innerHTML = `&nbsp;` + nowTemp + `&deg;`;
     hr1.innerHTML = `&nbsp;` + hr1Temp + `&deg;`;
     hr2.innerHTML = `&nbsp;` + hr2Temp + `&deg;`;
@@ -687,15 +617,20 @@ let weather = {
     /////FORECAST ICONS/////
     ////////////////////////
 
+    let isDay;
+
+    if (time < 20 && time > 5) {
+      isDay = true;
+    } else if (time > 20 || time < 6) {
+      isDay = false;
+    }
+
     /////CURRENT HOUR/////
     if (data.current.weather_code === 122) {
       document.getElementById(`hr0-cloudy`).style.display = `block`;
-    } else if (data.current.weather_code === 113 && time < 20 && time > 6) {
+    } else if (data.current.weather_code === 113 && isDay === true) {
       document.getElementById(`hr0-sunny`).style.display = `block`;
-    } else if (
-      (data.current.weather_code === 113 && time > 20) ||
-      (data.current.weather_code === 113 && time < 7)
-    ) {
+    } else if (data.current.weather_code === 113 && isDay === false) {
       document.getElementById(`hr0-clear-night`).style.display = `block`;
     } else if (
       data.current.weather_code === 200 ||
@@ -731,26 +666,34 @@ let weather = {
     ) {
       document.getElementById(`hr0-rain`).style.display = `block`;
     } else if (
-      data.current.weather_code === 116 ||
-      data.current.weather_code === 119 ||
-      data.current.weather_code === 176 ||
-      data.current.weather_code === 353 ||
-      data.current.weather_code === 356 ||
-      data.current.weather_code === 359
+      (data.current.weather_code === 116 && isDay === true) ||
+      (data.current.weather_code === 119 && isDay === true) ||
+      (data.current.weather_code === 176 && isDay === true) ||
+      (data.current.weather_code === 353 && isDay === true) ||
+      (data.current.weather_code === 356 && isDay === true) ||
+      (data.current.weather_code === 359 && isDay === true)
     ) {
       document.getElementById(`hr0-partly-cloudy`).style.display = `block`;
+    } else if (
+      (data.current.weather_code === 116 && isDay === false) ||
+      (data.current.weather_code === 119 && isDay === false) ||
+      (data.current.weather_code === 176 && isDay === false) ||
+      (data.current.weather_code === 353 && isDay === false) ||
+      (data.current.weather_code === 356 && isDay === false) ||
+      (data.current.weather_code === 359 && isDay === false)
+    ) {
+      document.getElementById(
+        `hr0-partly-cloudy-night`
+      ).style.display = `block`;
     }
     ////////////////
     /////HOUR 1/////
     ////////////////
     if (data.current.weather_code === 122) {
       document.getElementById(`hr1-cloudy`).style.display = `block`;
-    } else if (data.current.weather_code === 113 && time < 20 && time > 6) {
+    } else if (data.current.weather_code === 113 && isDay === true) {
       document.getElementById(`hr1-sunny`).style.display = `block`;
-    } else if (
-      (data.current.weather_code === 113 && time > 20) ||
-      (data.current.weather_code === 113 && time < 7)
-    ) {
+    } else if (data.current.weather_code === 113 && isDay === false) {
       document.getElementById(`hr1-clear-night`).style.display = `block`;
     } else if (
       data.current.weather_code === 200 ||
@@ -786,26 +729,34 @@ let weather = {
     ) {
       document.getElementById(`hr1-rain`).style.display = `block`;
     } else if (
-      data.current.weather_code === 116 ||
-      data.current.weather_code === 119 ||
-      data.current.weather_code === 176 ||
-      data.current.weather_code === 353 ||
-      data.current.weather_code === 356 ||
-      data.current.weather_code === 359
+      (data.current.weather_code === 116 && isDay === true) ||
+      (data.current.weather_code === 119 && isDay === true) ||
+      (data.current.weather_code === 176 && isDay === true) ||
+      (data.current.weather_code === 353 && isDay === true) ||
+      (data.current.weather_code === 356 && isDay === true) ||
+      (data.current.weather_code === 359 && isDay === true)
     ) {
       document.getElementById(`hr1-partly-cloudy`).style.display = `block`;
+    } else if (
+      (data.current.weather_code === 116 && isDay === false) ||
+      (data.current.weather_code === 119 && isDay === false) ||
+      (data.current.weather_code === 176 && isDay === false) ||
+      (data.current.weather_code === 353 && isDay === false) ||
+      (data.current.weather_code === 356 && isDay === false) ||
+      (data.current.weather_code === 359 && isDay === false)
+    ) {
+      document.getElementById(
+        `hr1-partly-cloudy-night`
+      ).style.display = `block`;
     }
     ////////////////
     /////HOUR 2/////
     ////////////////
     if (data.current.weather_code === 122) {
       document.getElementById(`hr2-cloudy`).style.display = `block`;
-    } else if (data.current.weather_code === 113 && time < 20 && time > 6) {
+    } else if (data.current.weather_code === 113 && isDay === true) {
       document.getElementById(`hr2-sunny`).style.display = `block`;
-    } else if (
-      (data.current.weather_code === 113 && time > 20) ||
-      (data.current.weather_code === 113 && time < 7)
-    ) {
+    } else if (data.current.weather_code === 113 && isDay === false) {
       document.getElementById(`hr2-clear-night`).style.display = `block`;
     } else if (
       data.current.weather_code === 200 ||
@@ -841,26 +792,34 @@ let weather = {
     ) {
       document.getElementById(`hr2-rain`).style.display = `block`;
     } else if (
-      data.current.weather_code === 116 ||
-      data.current.weather_code === 119 ||
-      data.current.weather_code === 176 ||
-      data.current.weather_code === 353 ||
-      data.current.weather_code === 356 ||
-      data.current.weather_code === 359
+      (data.current.weather_code === 116 && isDay === true) ||
+      (data.current.weather_code === 119 && isDay === true) ||
+      (data.current.weather_code === 176 && isDay === true) ||
+      (data.current.weather_code === 353 && isDay === true) ||
+      (data.current.weather_code === 356 && isDay === true) ||
+      (data.current.weather_code === 359 && isDay === true)
     ) {
       document.getElementById(`hr2-partly-cloudy`).style.display = `block`;
+    } else if (
+      (data.current.weather_code === 116 && isDay === false) ||
+      (data.current.weather_code === 119 && isDay === false) ||
+      (data.current.weather_code === 176 && isDay === false) ||
+      (data.current.weather_code === 353 && isDay === false) ||
+      (data.current.weather_code === 356 && isDay === false) ||
+      (data.current.weather_code === 359 && isDay === false)
+    ) {
+      document.getElementById(
+        `hr2-partly-cloudy-night`
+      ).style.display = `block`;
     }
     ////////////////
     /////HOUR 3/////
     ////////////////
     if (data.current.weather_code === 122) {
       document.getElementById(`hr3-cloudy`).style.display = `block`;
-    } else if (data.current.weather_code === 113 && time < 20 && time > 6) {
+    } else if (data.current.weather_code === 113 && isDay === true) {
       document.getElementById(`hr3-sunny`).style.display = `block`;
-    } else if (
-      (data.current.weather_code === 113 && time > 20) ||
-      (data.current.weather_code === 113 && time < 7)
-    ) {
+    } else if (data.current.weather_code === 113 && isDay === false) {
       document.getElementById(`hr3-clear-night`).style.display = `block`;
     } else if (
       data.current.weather_code === 200 ||
@@ -896,14 +855,25 @@ let weather = {
     ) {
       document.getElementById(`hr3-rain`).style.display = `block`;
     } else if (
-      data.current.weather_code === 116 ||
-      data.current.weather_code === 119 ||
-      data.current.weather_code === 176 ||
-      data.current.weather_code === 353 ||
-      data.current.weather_code === 356 ||
-      data.current.weather_code === 359
+      (data.current.weather_code === 116 && isDay === true) ||
+      (data.current.weather_code === 119 && isDay === true) ||
+      (data.current.weather_code === 176 && isDay === true) ||
+      (data.current.weather_code === 353 && isDay === true) ||
+      (data.current.weather_code === 356 && isDay === true) ||
+      (data.current.weather_code === 359 && isDay === true)
     ) {
       document.getElementById(`hr3-partly-cloudy`).style.display = `block`;
+    } else if (
+      (data.current.weather_code === 116 && isDay === false) ||
+      (data.current.weather_code === 119 && isDay === false) ||
+      (data.current.weather_code === 176 && isDay === false) ||
+      (data.current.weather_code === 353 && isDay === false) ||
+      (data.current.weather_code === 356 && isDay === false) ||
+      (data.current.weather_code === 359 && isDay === false)
+    ) {
+      document.getElementById(
+        `hr3-partly-cloudy-night`
+      ).style.display = `block`;
     }
     feelsLike.innerHTML = `&nbsp;` + data.current.feelslike + `&deg;`;
     highLow.innerHTML =
@@ -1075,13 +1045,13 @@ document.querySelector(`.options`).addEventListener(`click`, () => {
   document.getElementById(`forecast-box`).classList.toggle(`show-advanced`);
   document.getElementById(`hill-foreground`).classList.toggle(`hide-hills`);
   document.getElementById(`hill-middle`).classList.toggle(`hide-hills`);
-  bumpout.classList.toggle(`show`);
+  // bumpout.classList.toggle(`show`);
   closeIcon.classList.toggle(`show`);
 });
 
 closeIcon.addEventListener(`click`, () => {
   closeIcon.classList.remove(`show`);
-  bumpout.classList.remove(`show`);
+  // bumpout.classList.remove(`show`);
   document.querySelector(`.advanced-container`).classList.remove(`show`);
   document.getElementById(`forecast-box`).classList.remove(`show-advanced`);
   document.getElementById(`hill-foreground`).classList.remove(`hide-hills`);
