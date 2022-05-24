@@ -1070,7 +1070,7 @@ if (time > 19 || time < 6) {
   sun.style.display = `none`;
   sunGlow.style.display = `none`;
   options.style.stroke = `white`;
-  closeIcon.style.stroke = `white`;
+  // closeIcon.style.stroke = `white`;
   downloadBtn.style.stroke = `white`;
   cloudGlow.style.display = `block`;
   stars.style.display = `block`;
