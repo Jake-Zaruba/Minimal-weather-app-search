@@ -1,4 +1,4 @@
-"use strict";
+// "use strict";
 ////////////////////////
 /////SERVICE WORKER/////
 ////////////////////////
@@ -44,9 +44,49 @@ const downloadTimeout = setTimeout(() => {
 let d = new Date();
 console.log(d);
 let weatherDay = d.getDate();
+if (weatherDay === 1) {
+  weatherDay = `01`;
+} else if (weatherDay === 2) {
+  weatherDay = `02`;
+} else if (weatherDay === 3) {
+  weatherDay = `03`;
+} else if (weatherDay === 4) {
+  weatherDay = `04`;
+} else if (weatherDay === 5) {
+  weatherDay = `05`;
+} else if (weatherDay === 6) {
+  weatherDay = `06`;
+} else if (weatherDay === 7) {
+  weatherDay = `07`;
+} else if (weatherDay === 8) {
+  weatherDay = `08`;
+} else if (weatherDay === 9) {
+  weatherDay = `09`;
+}
+
 let weatherMonth = d.getMonth() + 1;
+if (weatherMonth === 1) {
+  weatherMonth = `01`;
+} else if (weatherMonth === 2) {
+  weatherMonth = `02`;
+} else if (weatherMonth === 3) {
+  weatherMonth = `03`;
+} else if (weatherMonth === 4) {
+  weatherMonth = `04`;
+} else if (weatherMonth === 5) {
+  weatherMonth = `05`;
+} else if (weatherMonth === 6) {
+  weatherMonth = `06`;
+} else if (weatherMonth === 7) {
+  weatherMonth = `07`;
+} else if (weatherMonth === 8) {
+  weatherMonth = `08`;
+} else if (weatherMonth === 9) {
+  weatherMonth = `09`;
+}
+
 let weatherYear = d.getFullYear();
-let currentWeatherDate = weatherYear + `-0` + weatherMonth + `-` + weatherDay;
+let currentWeatherDate = weatherYear + `-` + weatherMonth + `-` + weatherDay;
 const time = d.getHours();
 let currentCity = document.querySelector(`.city`);
 let currentTemp = document.querySelector(`.main-temp`);
@@ -114,7 +154,7 @@ document.querySelector(`.location-icon`).addEventListener(`click`, () => {
           let hr1Time = formatForecastTime(time + 1);
           let hr2Time = formatForecastTime(time + 2);
           let hr3Time = formatForecastTime(time + 3);
-
+          console.log(currentWeatherDate);
           let hr1Temp =
             data.forecast[currentWeatherDate].hourly[hr1Time].temperature;
 
@@ -148,10 +188,11 @@ document.querySelector(`.location-icon`).addEventListener(`click`, () => {
           let forecastHr1 = forecastTime + 1;
           let forecastHr2 = forecastTime + 2;
           let forecastHr3 = forecastTime + 3;
+
           const formatTime = function (hour) {
-            if (hour === 25) {
+            if (hour === 1) {
               return `1am`;
-            } else if (hour === 26) {
+            } else if (hour === 2) {
               return `2am`;
             } else if (hour === 3) {
               return `3am`;
@@ -195,7 +236,7 @@ document.querySelector(`.location-icon`).addEventListener(`click`, () => {
               return `10pm`;
             } else if (hour === 23) {
               return `11pm`;
-            } else if (hour === 24) {
+            } else if (hour === 0) {
               return `12am`;
             } else {
               return `0`;
@@ -217,11 +258,10 @@ document.querySelector(`.location-icon`).addEventListener(`click`, () => {
             isDay = false;
           }
 
-          console.log(isDay);
           //////////////////////
           /////CURRENT HOUR/////
           //////////////////////
-          console.log(time);
+
           if (data.current.weather_code === 122) {
             document.getElementById(`hr0-cloudy`).style.display = `block`;
           } else if (data.current.weather_code === 113 && isDay === true) {
