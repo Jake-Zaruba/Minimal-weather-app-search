@@ -597,9 +597,9 @@ let weather = {
     let forecastHr2 = forecastTime + 2;
     let forecastHr3 = forecastTime + 3;
     const formatTime = function (hour) {
-      if (hour === 25) {
+      if (hour === 1) {
         return `1am`;
-      } else if (hour === 26) {
+      } else if (hour === 2) {
         return `2am`;
       } else if (hour === 3) {
         return `3am`;
@@ -643,7 +643,7 @@ let weather = {
         return `10pm`;
       } else if (hour === 23) {
         return `11pm`;
-      } else if (hour === 24) {
+      } else if (hour === 0) {
         return `12am`;
       } else {
         return `0`;
