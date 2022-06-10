@@ -188,7 +188,7 @@ document.querySelector(`.location-icon`).addEventListener(`click`, () => {
           let forecastHr1 = forecastTime + 1;
           let forecastHr2 = forecastTime + 2;
           let forecastHr3 = forecastTime + 3;
-
+          /////FORMAT TO STANDARD TIME/////
           const formatTime = function (hour) {
             if (hour === 1) {
               return `1am`;
@@ -238,6 +238,12 @@ document.querySelector(`.location-icon`).addEventListener(`click`, () => {
               return `11pm`;
             } else if (hour === 0) {
               return `12am`;
+            } else if (hour === 24) {
+              return `12am`;
+            } else if (hour === 25) {
+              return `1am`;
+            } else if (hour === 26) {
+              return `2am`;
             } else {
               return `0`;
             }
@@ -596,6 +602,7 @@ let weather = {
     let forecastHr1 = forecastTime + 1;
     let forecastHr2 = forecastTime + 2;
     let forecastHr3 = forecastTime + 3;
+    /////FORMAT TO STANDARD TIME/////
     const formatTime = function (hour) {
       if (hour === 1) {
         return `1am`;
@@ -645,10 +652,17 @@ let weather = {
         return `11pm`;
       } else if (hour === 0) {
         return `12am`;
+      } else if (hour === 24) {
+        return `12am`;
+      } else if (hour === 25) {
+        return `1am`;
+      } else if (hour === 26) {
+        return `2am`;
       } else {
         return `0`;
       }
     };
+
     forecastHr1El.innerHTML = formatTime(forecastHr1);
     forecastHr2El.innerHTML = formatTime(forecastHr2);
     forecastHr3El.innerHTML = formatTime(forecastHr3);
